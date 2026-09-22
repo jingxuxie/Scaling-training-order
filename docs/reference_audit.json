@@ -1,0 +1,857 @@
+{
+  "checked_date": "2026-09-21",
+  "references_checked": 31,
+  "references_with_metadata_updates": 17,
+  "nonexistent_or_mismatched_works_found": 0,
+  "unresolved_citation_context_issues_found": 0,
+  "scope": "Bibliographic identity, version, author order, title, venue, year, identifiers, and support for the claims made at each citation. Primary metadata and abstracts were checked for every entry; relevant full-text passages were checked when needed. This does not independently reprove every cited paper.",
+  "access_notes": "Some DOI redirects and OpenReview pages rejected automated access. DOI metadata was verified using publisher-deposited Crossref records. Accessible arXiv camera-ready records, official conference PDFs, and author/conference pages supplied the affected venue checks; those cases are identified per entry.",
+  "source_of_truth": "docs/references.json",
+  "entries": [
+    {
+      "key": "bengio2009",
+      "original_key": "bengio2009",
+      "title": "Curriculum learning",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "International Conference on Machine Learning",
+          "after": "International Conference on Machine Learning, pp. 41--48"
+        }
+      },
+      "sources": [
+        "https://doi.org/10.1145/1553374.1553380",
+        "https://api.crossref.org/works/10.1145/1553374.1553380",
+        "https://ronan.collobert.com/pub/matos/2009_curriculum_icml.pdf"
+      ],
+      "claim_check": "Introduces curriculum learning as structured presentation order and reports convergence/generalization benefits. Supports the historical framing.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "bordelon2022",
+      "original_key": "bordelon2021",
+      "title": "Learning curves for SGD on structured features",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "key": {
+          "before": "bordelon2021",
+          "after": "bordelon2022"
+        },
+        "label": {
+          "before": "Bordelon and Pehlevan(2021)",
+          "after": "Bordelon and Pehlevan(2022)"
+        },
+        "venue": {
+          "before": "arXiv:2106.02713",
+          "after": "International Conference on Learning Representations"
+        },
+        "year": {
+          "before": 2021,
+          "after": 2022
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/2106.02713",
+          "after": "https://openreview.net/forum?id=WPI2vbkAl3Q"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2106.02713",
+        "https://openreview.net/forum?id=WPI2vbkAl3Q"
+      ],
+      "claim_check": "Exactly solvable SGD learning curves include Gaussian features, covariance structure, batch size, and finite datasets. Supports the related SGD-moment calculation.",
+      "note": "Changed from the 2021 preprint to the ICLR 2022 publication; renamed the citation key to bordelon2022 and updated its in-text uses. The OpenReview forum requires browser verification; the arXiv camera-ready record provides the venue and link."
+    },
+    {
+      "key": "bordelon2024",
+      "original_key": "bordelon2024",
+      "title": "A dynamical model of neural scaling laws",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "International Conference on Machine Learning",
+          "after": "International Conference on Machine Learning, PMLR 235:4345--4382"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/2402.01092",
+          "after": "https://proceedings.mlr.press/v235/bordelon24a.html"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2402.01092",
+        "https://proceedings.mlr.press/v235/bordelon24a.html"
+      ],
+      "claim_check": "A random-feature dynamical model links training time, model size, data, and spectral structure to scaling. Supports the spectral-scaling discussion.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "bordelon2025",
+      "original_key": "bordelon2025",
+      "title": "How feature learning can improve neural scaling laws",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "arXiv:2409.17858",
+          "after": "International Conference on Learning Representations"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2409.17858",
+        "https://openreview.net/pdf/58bb9e99f179c666b77c64894649192536081ae6.pdf"
+      ],
+      "claim_check": "Feature learning can improve scaling exponents for hard tasks; easy-task exponents can remain unchanged. The manuscript makes only the qualified general claim.",
+      "note": "Replaced the preprint-only venue with ICLR 2025, confirmed by the conference PDF. The original 2025 year was a publication year, not the initial 2024 arXiv posting year."
+    },
+    {
+      "key": "boucheron2013",
+      "original_key": "boucheron2013",
+      "title": "Concentration Inequalities: A Nonasymptotic Theory of Independence",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://academic.oup.com/book/26549"
+      ],
+      "claim_check": "Book on concentration for independent variables, including Gaussian concentration. The cited Gaussian norm tail bound is standard; the manuscript supplies its specialization.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "chen2023",
+      "original_key": "chen2023",
+      "title": "Skill-it! A data-driven skills framework for understanding and training language models",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "arXiv:2307.14430",
+          "after": "Advances in Neural Information Processing Systems, 36"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/2307.14430",
+          "after": "https://papers.nips.cc/paper_files/paper/2023/hash/70b8505ac79e3e131756f793cd80eb8d-Abstract-Conference.html"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2307.14430",
+        "https://papers.nips.cc/paper_files/paper/2023/hash/70b8505ac79e3e131756f793cd80eb8d-Abstract-Conference.html"
+      ],
+      "claim_check": "Ordered skill dependencies motivate an online mixture-sampling algorithm. Supports the skill-structure and adaptive-mixture descriptions.",
+      "note": "Replaced the preprint-only venue with NeurIPS 2023. Retained the full author names from the paper/arXiv rather than abbreviated or all-capital profile display names."
+    },
+    {
+      "key": "chen2025",
+      "original_key": "chen2025",
+      "title": "Aioli: A unified optimization framework for language model data mixing",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2411.05735",
+        "https://openreview.net/attachment?id=sZGZJhaNSe&name=pdf"
+      ],
+      "claim_check": "Aioli estimates mixing-law parameters during training and updates mixture proportions. Supports dynamic data mixing.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "chen2026",
+      "original_key": "chen2026",
+      "title": "Olmix: A framework for data mixing throughout LM development",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2602.12237"
+      ],
+      "claim_check": "Olmix studies mixture-method design and reuse when domains are added, removed, partitioned, or revised. Supports the domain-set-change description.",
+      "note": "Retained as an arXiv preprint; no conference venue is asserted."
+    },
+    {
+      "key": "dai2026",
+      "original_key": "dai2026",
+      "title": "Explaining data mixing scaling laws",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2606.08167",
+        "https://openreview.net/pdf/a074271455fcc6f10ef81d0eb9c1e7d6f84b49f3.pdf"
+      ],
+      "claim_check": "The abstract explicitly identifies capacity competition and noise reduction as mechanisms of data-mixing laws. Supports the specific attribution.",
+      "note": "ICML 2026 is stated in the current arXiv metadata and in the official workshop manuscript. The matching main-conference OpenReview forum was blocked by browser verification; no unverified page range was added."
+    },
+    {
+      "key": "fan2024",
+      "original_key": "fan2024",
+      "title": "DoGE: Domain reweighting with generalization estimation",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "arXiv:2310.15393",
+          "after": "International Conference on Machine Learning, PMLR 235:12895--12915"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/2310.15393",
+          "after": "https://proceedings.mlr.press/v235/fan24e.html"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2310.15393",
+        "https://proceedings.mlr.press/v235/fan24e.html"
+      ],
+      "claim_check": "A proxy model learns domain weights through bilevel optimization before training a larger model. Supports the proxy-optimization description.",
+      "note": "Replaced the preprint-only venue with ICML 2024. The proceedings title capitalizes DOGE; the paper and original arXiv use DoGE. Retained the paper acronym styling."
+    },
+    {
+      "key": "golden1965",
+      "original_key": "golden1965",
+      "title": "Lower bounds for the Helmholtz function",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "Physical Review, 137:B1127--B1128",
+          "after": "Physical Review, 137(4B):B1127--B1128"
+        }
+      },
+      "sources": [
+        "https://doi.org/10.1103/PhysRev.137.B1127",
+        "https://journals.aps.org/pr/abstract/10.1103/PhysRev.137.B1127",
+        "https://api.crossref.org/works/10.1103/PhysRev.137.B1127"
+      ],
+      "claim_check": "Original trace-product inequality for Hermitian operators. The manuscript applies the classical two-matrix Golden--Thompson inequality, without claiming a many-factor extension.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "gu2025",
+      "original_key": "gu2025",
+      "title": "Data selection via optimal control for language models",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2410.07064"
+      ],
+      "claim_check": "Language-model data selection is formulated as optimal control with Pontryagin maximum-principle conditions. Supports the control-based data-selection attribution.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "hacohen2019",
+      "original_key": "hacohen2019",
+      "title": "On the power of curriculum learning in training deep networks",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "arXiv:1904.03626",
+          "after": "International Conference on Machine Learning, PMLR 97:2535--2544"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/1904.03626",
+          "after": "https://proceedings.mlr.press/v97/hacohen19a.html"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/1904.03626",
+        "https://proceedings.mlr.press/v97/hacohen19a.html"
+      ],
+      "claim_check": "Tests curricula, difficulty measures, and pacing across CNN architectures and datasets, reporting learning-speed and test-performance effects. Supports the empirical context.",
+      "note": "Replaced the preprint-only venue with ICML 2019 and verified proceedings pages."
+    },
+    {
+      "key": "higham2008",
+      "original_key": "higham2008",
+      "title": "Functions of Matrices: Theory and Computation",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://doi.org/10.1137/1.9780898717778",
+        "https://epubs.siam.org/doi/book/10.1137/1.9780898717778",
+        "https://api.crossref.org/works/10.1137/1.9780898717778"
+      ],
+      "claim_check": "Covers matrix functions, exponentials, conditioning, and Frechet derivatives. Supports the standard matrix-exponential perturbation tools.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "hoffmann2022",
+      "original_key": "hoffmann2022",
+      "title": "An empirical analysis of compute-optimal large language model training",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "authors": {
+          "before": "Jordan Hoffmann et~al.",
+          "after": "Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Elena Buchatskaya, Trevor Cai, Eliza Rutherford, Diego de Las Casas, Lisa Anne Hendricks, Johannes Welbl, Aidan Clark, Thomas Hennigan, Eric Noland, Katherine Millican, George van den Driessche, Bogdan Damoc, Aurelia Guy, Simon Osindero, Kar\\'en Simonyan, Erich Elsen, Oriol Vinyals, Jack Rae, and Laurent Sifre"
+        },
+        "title": {
+          "before": "Training compute-optimal large language models",
+          "after": "An empirical analysis of compute-optimal large language model training"
+        },
+        "venue": {
+          "before": "arXiv:2203.15556",
+          "after": "Advances in Neural Information Processing Systems, 35"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/2203.15556",
+          "after": "https://papers.nips.cc/paper_files/paper/2022/hash/c1e2faff6f588870935f114ebe04a3e5-Abstract-Conference.html"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2203.15556",
+        "https://papers.nips.cc/paper_files/paper/2022/hash/c1e2faff6f588870935f114ebe04a3e5-Abstract-Conference.html"
+      ],
+      "claim_check": "Studies compute-optimal allocation between model size and training tokens. The published and preprint titles refer to the same Chinchilla study.",
+      "note": "Switched consistently to the NeurIPS 2022 bibliographic record: published title, full 22-author list in publisher order, volume, and proceedings link. The linked conference PDF retains the familiar Training Compute-Optimal Large Language Models title; this is a source-version title difference, not a different study."
+    },
+    {
+      "key": "kaplan2020",
+      "original_key": "kaplan2020",
+      "title": "Scaling laws for neural language models",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "authors": {
+          "before": "Jared Kaplan et~al.",
+          "after": "Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2001.08361"
+      ],
+      "claim_check": "Empirical loss scaling in model size, data, and compute, with optimal compute allocation. Supports the scaling-law motivation.",
+      "note": "Expanded the abbreviated author field to all 10 authors in the arXiv order. Retained the 2020 preprint venue."
+    },
+    {
+      "key": "liberzon2003",
+      "original_key": "liberzon2003",
+      "title": "Switching in Systems and Control",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://doi.org/10.1007/978-1-4612-0017-8",
+        "https://link.springer.com/book/10.1007/978-1-4612-0017-8",
+        "https://api.crossref.org/works/10.1007/978-1-4612-0017-8"
+      ],
+      "claim_check": "Control-theoretic treatment of switched systems, including arbitrary and constrained switching. Supports the statement that this control setting is established.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "liu2025",
+      "original_key": "liu2025",
+      "title": "RegMix: Data mixture as regression for language model pre-training",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2407.01492"
+      ],
+      "claim_check": "Fits a regression on small proxy runs to select a static mixture for a larger model. Supports the static-mixture comparison.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "maloney2022",
+      "original_key": "maloney2022",
+      "title": "A solvable model of neural scaling laws",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2210.16859"
+      ],
+      "claim_check": "A solvable random-feature model relates data/task spectra to power-law loss scaling. Supports the spectral-tail discussion.",
+      "note": "Retained as an arXiv preprint; no conference venue is asserted."
+    },
+    {
+      "key": "mori2025",
+      "original_key": "mori2025",
+      "title": "Optimal protocols for continual learning via statistical physics and control theory",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2409.18061",
+        "https://openreview.net/pdf?id=rhhQjGj09A"
+      ],
+      "claim_check": "Combines exact learning dynamics with optimal control for task-selection protocols in continual and multitask learning. Supports the specific protocol attribution.",
+      "note": "ICLR 2025 is correct; arXiv also reports a 2025 Journal of Statistical Mechanics version. Retained the conference version rather than combining versions."
+    },
+    {
+      "key": "pentina2015",
+      "original_key": "pentina2015",
+      "title": "Curriculum learning of multiple tasks",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "arXiv:1412.1353",
+          "after": "IEEE Conference on Computer Vision and Pattern Recognition"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/1412.1353",
+          "after": "https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Pentina_Curriculum_Learning_of_2015_CVPR_paper.pdf"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/1412.1353",
+        "https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Pentina_Curriculum_Learning_of_2015_CVPR_paper.pdf"
+      ],
+      "claim_check": "Studies sequential task transfer and learning the task order using a generalization bound. Supports the distinction between task curricula and fixed-source mixing.",
+      "note": "Replaced the preprint-only venue with CVPR 2015, confirmed by the CVF-hosted conference PDF. The arXiv ID begins in 2014, while 2015 is the conference year."
+    },
+    {
+      "key": "saglietti2022",
+      "original_key": "saglietti2022",
+      "title": "An analytical theory of curriculum learning in teacher-student networks",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "Advances in Neural Information Processing Systems",
+          "after": "Advances in Neural Information Processing Systems, 35"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/2106.08068",
+          "after": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/84bad835faaf48f24d990072bb5b80ee-Abstract-Conference.html"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2106.08068",
+        "https://proceedings.neurips.cc/paper_files/paper/2022/hash/84bad835faaf48f24d990072bb5b80ee-Abstract-Conference.html",
+        "https://proceedings.neurips.cc/paper_files/paper/2022/file/84bad835faaf48f24d990072bb5b80ee-Paper-Conference.pdf"
+      ],
+      "claim_check": "Teacher-student analysis separates online learning-speed benefits from asymptotic/generalization behavior. Both the proceedings text and later arXiv version support the manuscript sentence.",
+      "note": "Added the NeurIPS volume and proceedings link. The full author name Stefano Sarao Mannelli is confirmed on the paper title page, despite the abbreviated proceedings display name."
+    },
+    {
+      "key": "shukor2025",
+      "original_key": "shukor2025",
+      "title": "Scaling laws for optimal data mixtures",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "Advances in Neural Information Processing Systems",
+          "after": "Advances in Neural Information Processing Systems, 38"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/2507.09404",
+          "after": "https://papers.nips.cc/paper_files/paper/2025/hash/bc1d640f841f752c689aae20b31198c1-Abstract-Conference.html"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2507.09404",
+        "https://papers.nips.cc/paper_files/paper/2025/hash/bc1d640f841f752c689aae20b31198c1-Abstract-Conference.html"
+      ],
+      "claim_check": "Predicts loss as a function of model size, token count, and domain weights, then optimizes mixtures. Supports the mixture-scaling attribution.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "sweeney2026",
+      "original_key": "sweeney2026",
+      "title": "The geometry of sequential learning: Lie-bracket prediction of transfer order",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "arXiv:2606.24993",
+          "after": "International Conference on Machine Learning"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2606.24993",
+        "https://sideplane.ai/research",
+        "https://slideslive.com/39078349/the-geometry-of-sequential-learning-liebracket-prediction-of-transfer-order"
+      ],
+      "claim_check": "The Lie-bracket score predicts the leading local transfer-order effect. The manuscript describes this as local and does not substitute it for a global mixture comparison.",
+      "note": "Updated the preprint-only venue to ICML 2026, supported by the arXiv acceptance/report metadata, the author publication page, and the ICML recording. The linked OpenReview forum requires browser verification; no page range was inferred."
+    },
+    {
+      "key": "thompson1965",
+      "original_key": "thompson1965",
+      "title": "Inequality with applications in statistical mechanics",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "Journal of Mathematical Physics, 6:1812--1813",
+          "after": "Journal of Mathematical Physics, 6(11):1812--1813"
+        }
+      },
+      "sources": [
+        "https://doi.org/10.1063/1.1704727",
+        "https://api.crossref.org/works/10.1063/1.1704727"
+      ],
+      "claim_check": "Publisher-deposited abstract explicitly states tr(exp(A+B)) <= tr(exp(A)exp(B)) for Hermitian A and B. Matches the two-phase use in supporting_results.tex.",
+      "note": "Verified authors, title, year, DOI, volume, issue, pages, and the inequality from AIP-deposited Crossref metadata after the publisher page failed to load."
+    },
+    {
+      "key": "weinshall2018",
+      "original_key": "weinshall2018",
+      "title": "Curriculum learning by transfer learning: Theory and experiments with deep networks",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "Proceedings of Machine Learning Research, 80:5238--5246",
+          "after": "International Conference on Machine Learning, PMLR 80:5238--5246"
+        }
+      },
+      "sources": [
+        "https://proceedings.mlr.press/v80/weinshall18a.html"
+      ],
+      "claim_check": "Analyzes curriculum difficulty and convergence for convex regression, and transfer-derived curricula for CNNs. Supports the transfer/convergence description.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "weinshall2020",
+      "original_key": "weinshall2020",
+      "title": "Theory of curriculum learning, with convex loss functions",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://jmlr.org/papers/v21/18-751.html"
+      ],
+      "claim_check": "Analyzes curriculum learning with convex losses. Supports the convex-loss convergence context.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "wu2021",
+      "original_key": "wu2021",
+      "title": "When do curricula work?",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2012.03107"
+      ],
+      "claim_check": "Reports limited benefits in standard regimes and improvements with limited training time or noisy data. Supports the training-regime qualification.",
+      "note": "Metadata correct. The renderer now avoids appending an extra period after the question mark in the title."
+    },
+    {
+      "key": "xie2023",
+      "original_key": "xie2023",
+      "title": "DoReMi: Optimizing data mixtures speeds up language model pretraining",
+      "status": "verified; updated",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {
+        "venue": {
+          "before": "arXiv:2305.10429",
+          "after": "Advances in Neural Information Processing Systems, 36"
+        },
+        "url": {
+          "before": "https://arxiv.org/abs/2305.10429",
+          "after": "https://papers.nips.cc/paper_files/paper/2023/hash/dcba6be91359358c2355cd920da3fcbd-Abstract-Conference.html"
+        }
+      },
+      "sources": [
+        "https://arxiv.org/abs/2305.10429",
+        "https://papers.nips.cc/paper_files/paper/2023/hash/dcba6be91359358c2355cd920da3fcbd-Abstract-Conference.html"
+      ],
+      "claim_check": "Uses proxy-model group DRO to learn weights for larger-model pretraining. Supports the proxy-mixture optimization description.",
+      "note": "Replaced the preprint-only venue with NeurIPS 2023 and the proceedings link."
+    },
+    {
+      "key": "ye2025",
+      "original_key": "ye2025",
+      "title": "Data mixing laws: Optimizing data mixtures by predicting language modeling performance",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2403.16952"
+      ],
+      "claim_check": "Fits mixture-performance laws and combines them with model/training scaling to predict effective mixtures. Supports the data-mixing-law description.",
+      "note": "Metadata and citation context match the primary records. Additional volume, issue, page, or link details were normalized where available."
+    },
+    {
+      "key": "zhao2026",
+      "original_key": "zhao2026",
+      "title": "RegMix-D: Dynamic data mixing via proxy training trajectories",
+      "status": "verified",
+      "checked_fields": [
+        "existence",
+        "author names and order",
+        "title",
+        "year/version",
+        "venue",
+        "URL/identifier",
+        "citation context"
+      ],
+      "changes": {},
+      "sources": [
+        "https://arxiv.org/abs/2606.18663"
+      ],
+      "claim_check": "Transfers dynamic mixtures from proxy loss trajectories, with offline and online variants. Supports the distinction from static RegMix.",
+      "note": "Retained as an arXiv preprint; its record labels the work in progress."
+    }
+  ],
+  "compiled_pdf": {
+    "pages": 33,
+    "main_text_pages": 9,
+    "reference_pages": [
+      10,
+      11,
+      12
+    ],
+    "appendix_start_page": 13,
+    "sha256": "91207b9a98bb6811b0aa597a4d7a7dabba60eb3d10711f8015c71064f1022178",
+    "unresolved_citations_or_references": 0,
+    "overfull_boxes": 0,
+    "visual_review": {
+      "pages_reviewed": 33,
+      "method": "All-page rendered overview; bibliography pages 10-12 and appendix transition at page 13 also inspected at higher resolution.",
+      "clipping_or_overlap_found": false
+    }
+  },
+  "preservation_check": {
+    "method": "SHA-256 comparison against the pre-reference-edit manifest",
+    "unchanged_figure_assets": 22,
+    "unchanged_result_files": 37
+  }
+}

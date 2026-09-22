@@ -1,0 +1,8 @@
+{
+  "repository": "jingxuxie/Scaling-training-order",
+  "base_commit": "f2081a5913f25216aa164d8f91aef81d361354e3",
+  "base_tree": "7367bb7bfdf7811bd6255bf974634a376ce1207a",
+  "base_readme_blob": "a691260c1de9db136fd4c969328b68697dc158fb",
+  "source": "GitHub connector reads of existing README bytes and commit metadata; every reconstructed Git object hash verified exactly. Original attribution preserved only on the unchanged original commit.",
+  "new_commit_author": "Research Workspace (AI-assisted working draft)"
+}

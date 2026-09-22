@@ -1,0 +1,163 @@
+\section{An exact boundary for arbitrary schedules}\label{app:global}
+This section proves the comparison with arbitrary measurable schedules, without restricting the number of phases. It also distinguishes the threshold for \emph{some useful curriculum} from the more restrictive threshold for one particular preparation rule. All schedules in this section are chosen before drawing the initial error. The schedule may depend on its known second moment, but it must be the same linear evolution for both initial directions.
+
+We prove a slightly more general statement. In an orthonormal basis $(u,v)$, let
+\[
+ G(z)=\begin{pmatrix}a&z\\z&d\end{pmatrix},\qquad
+ a>d>0,\quad |z|\le h,\quad 0<h\le\sqrt{ad},\qquad
+ S=\begin{pmatrix}1&0\\0&\eps\end{pmatrix},\quad Q=I.
+\]
+The two sources have $z=\pm h$ and any intermediate $z$ is a mixture. The normalized family in the main text has diagonals $\rho+a_\phi,\rho+d_\phi$, off-diagonal limit $\sqrt{a_\phi d_\phi}$, and diagonal gap $c=\cos\phi$. In this appendix only, put $c=a-d$ and $s=a+d$.
+
+\begin{theorem}[Exact arbitrary-schedule boundary]\label{thm:general_boundary}
+For $B>0$ and $\eps\ge0$, balanced static mixing is optimal among all measurable schedules if and only if
+\[
+ \eps\ge e^{-2cB}.
+\]
+If $\eps<e^{-2cB}$, a schedule with just two mixed phases strictly improves on \emph{every} static mixture. No assertion that this two-phase witness is globally optimal is needed.
+\end{theorem}
+
+\begin{lemma}[A slow column cannot be accelerated]\label{lem:slow_column}
+For every measurable $z:[0,B]\to[-h,h]$, its transition satisfies
+\[
+ \|\Phi(B)v\|^2\ge e^{-2dB}.
+\]
+\end{lemma}
+\begin{proof}
+Write the solution from $v$ as $(x(t),y(t))$, initially $(0,1)$. Define $W(t)=y(t)^2-x(t)^2$. The off-diagonal terms cancel exactly:
+\[
+ W'(t)=-2dW(t)+2c x(t)^2.
+\]
+Consequently
+\begin{equation}
+ W(B)=e^{-2dB}\left[1+2c\int_0^B e^{2dt}x(t)^2\,dt\right]\ge e^{-2dB}.
+ \label{eq:lorentz_identity}
+\end{equation}
+Since $\|(x,y)\|^2=W+2x^2$, the result follows. Bounded measurable coefficients give an absolutely continuous solution; the identity and its integration hold almost everywhere. The argument therefore does not depend on a finite number of switches.
+\end{proof}
+
+\begin{proof}[Sufficiency in Theorem~\ref{thm:general_boundary}]
+Let $f=\Phi u$, $g=\Phi v$, $t=\|g\|^2$, and $k=f^\top g$. The trace of the generator is always $s$, so Liouville's formula gives $(\det\Phi)^2=D:=e^{-2sB}$. The two-dimensional Gram determinant identity yields
+\begin{equation}
+ 2\R(\Phi)=\frac{D+k^2}{t}+\eps t\ge\frac{D}{t}+\eps t,
+ \qquad t\ge b:=e^{-2dB}.
+ \label{eq:gram_lower}
+\end{equation}
+If $\eps\ge D/b^2=e^{-2cB}$, the function $D/t+\eps t$ is nondecreasing for $t\ge b$. Thus
+\[
+ \R(\Phi)\ge\tfrac12(D/b+\eps b)
+ =\tfrac12(e^{-2aB}+\eps e^{-2dB}).
+\]
+The balanced schedule has orthogonal columns of these lengths, so it attains the bound. Lemma~\ref{lem:diagonal} already shows this is the globally best static risk.
+\end{proof}
+
+\begin{proof}[Necessity in Theorem~\ref{thm:general_boundary}]
+Consider $z_\eta(t)=\eta\zeta(t)$, where
+\[
+ \zeta(t)=\begin{cases}q,&0\le t<B/2,\\-1,&B/2\le t\le B,\end{cases}
+ \qquad
+ q=\frac{\sinh(cB/2)}{\sinh(cB)-\sinh(cB/2)}
+ =\frac1{2\cosh(cB/2)-1}\in(0,1).
+\]
+For $0<\eta\le h$ this is feasible. The transition is analytic in $\eta$. At zero, $f_0=(e^{-aB},0)$ and $g_0=(0,e^{-dB})$. Variation of constants gives
+\[
+ \partial_\eta\Phi_{12}(0)=-e^{-aB}\int_0^B\zeta(t)e^{ct}\,dt,
+ \qquad
+ \partial_\eta\Phi_{21}(0)=-e^{-dB}\int_0^B\zeta(t)e^{-ct}\,dt.
+\]
+Therefore
+\[
+ k'(0)=-\int_0^B \zeta(t)\left(e^{-2aB+ct}+e^{-2dB-ct}\right)dt=0.
+\]
+Indeed the parenthesized weight is $2e^{-sB}\cosh(c(B-t))$, and $q$ is the ratio of its second-half to first-half integral. Conjugation by $\operatorname{diag}(-1,1)$ changes $\eta$ to $-\eta$; thus $k(\eta)$ is odd and $t(\eta)=\|g_\eta\|^2$ is even. In particular $k(\eta)=O(\eta^3)$.
+
+For completeness, the increase in the slow column is strictly positive to second order. If $x_1(t)=\partial_\eta x_\eta(t)|_{\eta=0}$, then
+\[
+ x_1(t)=-e^{-at}\int_0^t\zeta(r)e^{cr}\,dr.
+\]
+Applying \eqref{eq:lorentz_identity} to $g_\eta$ gives
+\[
+ t(\eta)=b+K\eta^2+O(\eta^4),\quad
+ K=2x_1(B)^2+2c e^{-2dB}\int_0^B e^{2dt}x_1(t)^2dt>0.
+\]
+Strict positivity holds because $q>0$, so $x_1$ is nonzero on an initial interval. Substituting in the \emph{exact} Gram expression in \eqref{eq:gram_lower} gives
+\begin{equation}
+ \R(\Phi_\eta)-\Rs(B)
+ =\tfrac K2\left(\eps-e^{-2cB}\right)\eta^2+O(\eta^4).
+ \label{eq:boundary_variation}
+\end{equation}
+When $\eps<e^{-2cB}$ the leading coefficient is strictly negative. A sufficiently small positive $\eta$ therefore gives the claimed two-phase witness. This is an existence result with an explicit family of witnesses, not a claim that a fixed amplitude works uniformly near the boundary.
+\end{proof}
+
+\begin{corollary}[Finite-budget lower envelope and eventual exact optimality]\label{cor:global_envelope}
+In the normalized family, set $\eps_{\rm crit}=e^{-2cB}$. Every schedule satisfies
+\[
+ \R(\Phi)\ge L(B,\eps):=
+ \begin{cases}
+ \sqrt\eps\,e^{-(1+2\rho)B},&0\le\eps<\eps_{\rm crit},\\
+ \Rs(B,\eps),&\eps\ge\eps_{\rm crit}.
+ \end{cases}
+\]
+It also satisfies $\R(\Phi)\ge\frac12(1+\eps)e^{-2(1+\rho)B}$ and $\R(\Phi)\ge\frac12\eps e^{-2(\rho+d)B}$. For $0<\eps<1$, the balanced mixture is \emph{exactly} optimal for all
+\[
+ B\ge B_{\rm stop}(\eps):=\frac{\log(1/\eps)}{2\cos\phi}.
+\]
+In particular, the arbitrary-schedule and two-phase loss gains both equal one beyond this budget, a stronger statement than sharing an asymptotic rate.
+\end{corollary}
+\begin{proof}
+Minimize $D/t+\eps t$ on $t\ge b$. The unconstrained minimizer is $t=\sqrt{D/\eps}$; it is feasible precisely below the critical value. At $\eps=0$, take the infimum as $t\to\infty$, which is a valid, possibly loose lower bound. The other two inequalities follow from the energy derivative and Lemma~\ref{lem:slow_column}. Rearranging the boundary gives $B_{\rm stop}$.
+\end{proof}
+
+\paragraph{What this theorem does not cover.}
+The main theorem assumes a common, precommitted schedule for the initial-error ensemble. A scheduler that observes each realized error and chooses a different path has a different information model; the same transition cannot then be applied to both columns of $S$. Likewise, the exact boundary does not automatically apply to target anisotropy $Q\ne I$, non-symmetric source geometry, state-dependent Hessians, noisy SGD, or a fixed charge for switching. Allowing costless arbitrary switching only strengthens the no-benefit side. Below the boundary the existence of a strictly better schedule does not imply that its small benefit pays for calibration or switching overhead.
+
+\section{Isotropic process noise: an unavoidable loss contribution}\label{app:diffusion}
+Consider the continuous-time model
+\[
+ de(t)=-G(p(t))e(t)\,dt+\sigma\,dW(t),
+ \qquad \E[e(0)e(0)^\top]=S_\eps,
+\]
+with a deterministic measurable schedule, standard two-dimensional Brownian motion independent of $e(0)$, and the same normalized symmetric family. This is an explicitly specified additive-noise model, not an assertion that every SGD process has this diffusion.
+
+\begin{proposition}[Balanced mixing minimizes the noise contribution]\label{prop:diffusion}
+Define
+\[
+ N(B)=\frac{\sigma^2}{4}\left[
+ \frac{1-e^{-2(\rho+a)B}}{\rho+a}
+ +\frac{1-e^{-2(\rho+d)B}}{\rho+d}\right].
+\]
+Every schedule has expected risk at least $L(B,\eps)+N(B)$, where $L$ may be replaced by the maximum of the lower bounds in Corollary~\ref{cor:global_envelope}. Balanced mixing has risk $\Rs(B,\eps)+N(B)$. Thus it is exactly optimal above the same sufficient uncertainty boundary, and, for every fixed $\sigma>0$, the best attainable gain tends to one as $B\to\infty$, even when $\eps=0$.
+\end{proposition}
+\begin{proof}
+The second moment equals
+\[
+ \Phi(B,0)S_\eps\Phi(B,0)^\top
+ +\sigma^2\int_0^B\Phi(B,t)\Phi(B,t)^\top dt.
+\]
+For each $t$, the suffix transition is an admissible schedule of length $B-t$. Theorem~\ref{thm:general_boundary} at $\eps=1$ bounds its half squared Frobenius norm below by the balanced value. Integrating this bound gives $N(B)$ exactly. Add the deterministic lower bound. Since $N(B)$ converges to a strictly positive constant while $\Rs(B,\eps)\to0$, the gain is between one and $(\Rs+N)/(L+N)$ and tends to one. This proof requires the schedule to be independent of the Brownian path.
+\end{proof}
+
+\section{The gain vanishes quadratically at the boundary}\label{app:near_boundary}
+The boundary theorem distinguishes a strict improvement from no improvement. The next result quantifies how small the possible gain becomes just below the boundary.
+
+\begin{corollary}[Sharp near-boundary gain]\label{cor:near_boundary}
+Fix $B>0$, an acute source angle, and a nonnegative ridge. Put $\eps=e^{-2cB}(1-\xi)$ and let $\xi\downarrow0$. Then
+\[
+ \frac{\Rs(B,\eps)}{\Rt(B,\eps)}-1
+ =\frac{\xi^2}{8}+O(\xi^3),\qquad
+ \frac{\Rs(B,\eps)}{\Ra(B,\eps)}-1
+ =\frac{\xi^2}{8}+O(\xi^3).
+\]
+The constants are for fixed geometry and budget; this is not uniform as the source gap, off-diagonal strength, or budget tends to zero.
+\end{corollary}
+\begin{proof}
+Use the general-family notation of Appendix~\ref{app:global}. Let $b=e^{-2dB}$ and $E=e^{-2aB}$. The unconstrained Gram lower envelope is
+$\sqrt\eps e^{-sB}=E\sqrt{1-\xi}$, while the best static risk is $E(1-\xi/2)$. Hence their difference is $E\xi^2/8+O(\xi^3)$.
+
+For the explicit perturbation used in the necessity proof, choose
+$\eta^2=b\xi/(2K)$, with $K>0$ as defined there. It is feasible for all sufficiently small $\xi$. Its slow-column length is
+$t=b(1+\xi/2)+O(\xi^2)$; its column inner product is $k=O(\xi^{3/2})$. The minimizing length in the Gram lower bound is
+$t_* = b/\sqrt{1-\xi}=b(1+\xi/2)+O(\xi^2)$. Since the derivative of $D/t+\eps t$ vanishes at $t_*$, replacing $t_*$ by $t$ costs $O(\xi^4)$. The additional Gram term $k^2/(2t)$ is $O(\xi^3)$. Thus this two-phase witness has risk at most $E\sqrt{1-\xi}+O(\xi^3)$.
+
+Sandwich the all-schedule optimum and the two-phase optimum between the lower envelope and this feasible witness. Dividing the resulting loss difference by the optimal risk, which tends to $E>0$, gives the claimed coefficient. A common ridge changes $E$ and $K$ but cancels from the risk ratios.
+\end{proof}

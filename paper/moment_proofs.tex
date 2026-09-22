@@ -1,0 +1,50 @@
+\section{Exact Gaussian SGD and a global static bracket}\label{app:moments}
+The continuous-time theorem does not describe all sources of SGD noise. We therefore use an exact discrete-time calculation rather than fitting a diffusion to the training runs. The moment closure is a standard Gaussian calculation; related solvable SGD dynamics are studied by \citet{bordelon2022}. Our use of it is to compare a candidate schedule with a global bracket on all static mixture weights.
+
+\subsection{One source}
+Consider linear regression with a shared target, fresh independent examples $x\sim N(0,H)$, and independent zero-mean label noise of variance $\sigma_y^2$. A minibatch of size $m$ takes one gradient step of size $\eta$. The source choices and data at each update are independent of the current error. Let $S=\E[ee^\top]$. Then
+\begin{align}
+ S^+&=\mathcal T_H(S)+q_H,\qquad q_H=\eta^2\sigma_y^2H/m,\nonumber\\
+ \mathcal T_H(S)&=S-\eta(HS+SH)+\eta^2[(1+m^{-1})HSH+m^{-1}\tr(HS)H].\label{eq:sgd_moment}
+\end{align}
+To see this, write the update as $e^+=(I-\eta\widehat H)e+\eta\widehat n$. Gaussian fourth moments give
+$\E[xx^\top Sxx^\top]=2HSH+\tr(HS)H$. The $m(m-1)$ cross-example terms contribute $HSH$, while the $m$ same-example terms contribute the preceding fourth moment. The label-noise cross term vanishes, and $\E[\widehat n\widehat n^\top]=\sigma_y^2H/m$. This proves \eqref{eq:sgd_moment}. The distribution of $e$ need not be Gaussian; its second moment and independence from the fresh batch suffice.
+
+\subsection{Two different meanings of a mixed minibatch}
+In the \emph{batch-source} convention, a single domain is sampled with probability $p$, and all $m$ examples come from it. Thus $T(p)=p\mathcal T_A+(1-p)\mathcal T_B$ and $q(p)=pq_A+(1-p)q_B$.
+
+In our primary \emph{example-source} convention, the domain is sampled independently for each example. Let $H_p=pH_A+(1-p)H_B$ and $M_i(S)=2H_iSH_i+\tr(H_iS)H_i$. The correct map is
+\begin{equation}
+ T(p)S=S-\eta(H_pS+SH_p)+\eta^2\left[(1-m^{-1})H_pSH_p+m^{-1}\{pM_A(S)+(1-p)M_B(S)\}\right].\label{eq:example_moment}
+\end{equation}
+The noise injection remains $q(p)$. This follows by separating the same-example and cross-example terms as above. In particular,
+\[
+ T(p)=T_0+pT_1+p^2T_2,\qquad
+ T_0=\mathcal T_B,\quad T_2(S)=\eta^2(1-m^{-1})\Delta H S\Delta H,\quad
+ T_1=\mathcal T_A-\mathcal T_B-T_2,
+\]
+where $\Delta H=H_A-H_B$. For batch-source sampling $T_2=0$. The conventions agree at $m=1$ or a pure source, but not in general. The exact risk of any prescribed schedule is computed by composing these affine maps. An extra constant coordinate turns them into ordinary $4\times4$ matrices in a three-dimensional basis of symmetric $2\times2$ matrices.
+
+\subsection{A lower bound between evaluated static weights}
+A dense grid alone does not prove that a static comparator is globally optimal. Define its exact expected risk after $K$ updates by
+\[
+ f(p)=\tfrac12\tr\left[T(p)^KS_0+\sum_{j=0}^{K-1}T(p)^jq(p)\right].
+\]
+We bound every cell between grid points without assuming that $f$ is convex. On symmetric matrices, let $\|\cdot\|_1$ denote the nuclear norm. Each $T(p)$ is positive because it is an expectation of maps $S\mapsto MSM^\top$. Its induced nuclear norm is $\|T(p)^*(I)\|_{\op}$. The upper bound follows by decomposing an input into positive and negative parts; equality follows by choosing a rank-one input in a top eigendirection of $T(p)^*(I)$.
+
+For a cell $[l,r]$, let $v$ upper-bound this map norm throughout the cell. The larger endpoint eigenvalue suffices: in the batch-source case $T(p)^*(I)$ is affine; in the example-source case it is matrix convex, since its quadratic coefficient is the PSD matrix $\eta^2(1-m^{-1})(\Delta H)^2$. Let $\Delta_1\ge\sup_{[l,r]}\|T'(p)\|_{1\to1}$, $\Delta_2\ge\|T''(p)\|_{1\to1}$, $Q\ge\sup_{[l,r]}\|q(p)\|_1$, and $\Delta_q=\|q_A-q_B\|_1$. Differentiating each ordered product and using submultiplicativity gives
+\begin{align}
+ |f''(p)|\le M:=&\tfrac12\tr(S_0)\left[K(K-1)\Delta_1^2v^{K-2}+K\Delta_2v^{K-1}\right]\nonumber\\
+ &+\tfrac12Q\left[\Delta_1^2\sum_{j=2}^{K-1}j(j-1)v^{j-2}+\Delta_2\sum_{j=1}^{K-1}jv^{j-1}\right]
+ +\Delta_1\Delta_q\sum_{j=1}^{K-1}jv^{j-1}.\label{eq:sgd_curvature}
+\end{align}
+Terms whose counting coefficient is zero are omitted. The $\Delta_1^2$ terms count two differentiated factor positions; the $\Delta_2$ terms count one twice-differentiated position. Differentiating the affine noise injection gives the last term. These arguments do not require the factors to commute.
+
+For cell width $w=r-l$, the scalar interpolation remainder yields
+\[
+ \min\{f(l),f(r)\}-Mw^2/8\le\inf_{p\in[l,r]}f(p).
+\]
+The minimum of these lower bounds, truncated at zero, is a global lower bracket; the best evaluated point is an upper bracket. A candidate below the lower bracket beats every static mixture in exact real arithmetic.
+
+\paragraph{Implementation and limitations.}
+An orthonormal Frobenius basis represents each map by a $3\times3$ matrix. Since $\|S\|_F\le\|S\|_1\le\sqrt2\|S\|_F$, $\sqrt2$ times its spectral norm bounds its induced nuclear norm. The derivative is affine in $p$, so endpoint norms bound $\Delta_1$; $\Delta_2$ is constant. The experiments use trace-nonexpansive maps ($v\le1$). Each finite derivative sum is upper-bounded by the smaller of its value at $v=1$ and its infinite geometric-series derivative. These are conservative upper bounds, not truncated approximations. Grid sizes increase from 1,025 to 4,097, 16,385, or 65,537 when needed to target a relative bracket width below $10^{-3}$. All bounds are evaluated in float64, not directed-rounding arithmetic. The paper reports them as numerical evaluations of an analytical bracket, not formal computer-verified certificates. Monte Carlo checks and dense-grid tests independently test the implementation.

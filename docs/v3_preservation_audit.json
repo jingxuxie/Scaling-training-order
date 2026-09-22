@@ -1,0 +1,306 @@
+{
+  "parent_commit": "dc32104a8c79dbcf98684f6dd812c0e12852092a",
+  "scope": "Byte comparison to preceding revision; this is not a new experimental reproduction.",
+  "files": [
+    {
+      "group": "recorded_results",
+      "path": "results/arbitrary_schedule_audit.csv",
+      "sha256": "fc54f3ea685ef40cfa80da4720e45715d53c54042f21213a337fe04bb0c088e8",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/boundary_high_precision.csv",
+      "sha256": "47d5c9ec94f7199d6f0851087950d1e48e1794286c5dc03100a06e0af1305a41",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/capacity_compute.csv",
+      "sha256": "30febbbfcc751ec24347f9596b509c934780b907d81fbcf87467f472432c9651",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/compute_to_target.csv",
+      "sha256": "91461fd575112a57e99ff66597a3c9ba2094136e864a9d7e53c0ea214b9d0705",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/diffusion_audit.csv",
+      "sha256": "97aa3336743ba9c8a00a44d541f4ea260564686536cb86403516802be0dbd5d9",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/diffusion_curves.csv",
+      "sha256": "656b10eaff4444b6b53ab5e0dd90bdfc55c7d25a46b8c7af4ad83ff9f197997c",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/discretization.csv",
+      "sha256": "eaa29c7f4fb78cb4554121763742e0921b24bb4777a8100ed946a182f614755f",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_exact.json",
+      "sha256": "633f20ebf7030e2f8e9c75741295b2d91df4f89b17712b1b00f6e2abd3152e4b",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_finite_data.json",
+      "sha256": "b799de2ef5ca9c8c6507b3417c7db7ecf7d1fb8f55ee081eb6af512898792fc3",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_nonlinear.json",
+      "sha256": "d328a2d117ecdc1e35c80abcb7a9b913c44f75d7887baed6b99018f64acd8034",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_pilots.json",
+      "sha256": "f715d451749559cd1087a57c8cc24972aec797964eb4fc99b68ef1d16a696fe8",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_robustness.json",
+      "sha256": "6e2422d6c93209dbfddc9f7059c02b27317a4b1f4a510063dc016875799f79ba",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_spectral.json",
+      "sha256": "3836348f2de1e4dd9ca963de218653576f23daf8efb1438e3cef64a030f4c4d1",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_v2_all.json",
+      "sha256": "281ba5c35cd3abd3731c6e33596dbf5f62ae045c456a86e1b2a678b572b58318",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_v2_moments.json",
+      "sha256": "092c62296328a879577501b9e92504829ed543f194dae011dad94a8f30a849e7",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/environment_v2_monte_carlo.json",
+      "sha256": "c6463dab5038cb4f57280784ee2fac41dbed5c646446218873a18b7582120ca1",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/extension_summary.json",
+      "sha256": "62267a5f4d4721d34d02380ce3890176a863ae5ea1b20a2f25c6b3f33abd18eb",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/family_curves.csv",
+      "sha256": "850842be2851a9b3fd945c8728e34d2c217e54925ff684ac3530a7a7156d50b6",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/finite_data_sgd.csv",
+      "sha256": "23b42f7936e6713a6a0c50b529bac5cbf6fbf675b3c2db88b423cd6554768b84",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/finite_data_sgd_summary.csv",
+      "sha256": "e472ccab5d065046cebf0fca302266d305d5999456d8a62e6df8b226d32e5373",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/gaussian_sgd_moments.csv",
+      "sha256": "aa8edbe38df06a883650b19e7b08fb3dbc6c5770d1f0c0f73f5f4d7024013ac5",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/gaussian_sgd_monte_carlo.csv",
+      "sha256": "f06e9fe1982a1781bf632a9f6dc5f4d08ea10134fae0c5ba008eb94021a1bf97",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/global_boundary_curves.csv",
+      "sha256": "4cb7907d89e5163ead07f6d422908f06cf8ce152b230036b56185053c2f3ef13",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/isotropic_audit.csv",
+      "sha256": "0f03fcce99c22f6029471c5659c9f0125d518b51e82d02a9a092d525a6d24d48",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/moment_condition_summary.csv",
+      "sha256": "fce51f2944d9c94c4ed9b0e699e5b48d46b02d41d247901bc11f28775dbbdf05",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/near_boundary_gain.csv",
+      "sha256": "eb24451b31572575339e921beaf630291e99cebf8a80ebb4a9eefaef79e71da8",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/nonlinear_stress.csv",
+      "sha256": "3d460df001de09acad7dfc421b5a5f9e35c819146929170b261ffb7a6c4dbbc3",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/nonlinear_stress_summary.csv",
+      "sha256": "048f4ad95fa60c06fa64833d366155a3462912a5d1453384d0dc60f0d07dda0e",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/perturbation_summary.csv",
+      "sha256": "6f9e84884172ae22c7bdf924533571c1b3a119b97d82aaa1550b7659d7c33883",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/perturbed_geometry.csv",
+      "sha256": "bd5d6a2a7e8690056190eb99c433d4b6664846bb62396d38d813621483950526",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/pilot_trials.csv",
+      "sha256": "ecb2743b5fcb89f35c4c59e771383b2109656d59ffc3c7fb143217e9f26a1dc7",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/spectral_profiles.csv",
+      "sha256": "9cabcf79752776aae109261e88bc0fd29925ebef6a407cf9eebae5927a2ebea7",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/static_audit.csv",
+      "sha256": "b31f1b76660b08b1ce3fb05d5ac374ea7673214cb2dabfe49371973fb1207604",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/statistical_protocol.md",
+      "sha256": "7fc84d8b03f1b9037ef9a84220dc9a383d5d1a57db9bff9be8854633a5937abd",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/summary.json",
+      "sha256": "e35a1e2a268053e77cb12d90f3c4a033c31b0b7e66f4992b658755d6fa828091",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/two_phase_bound_audit.csv",
+      "sha256": "db0cd93ef8043bed91d1aaa3a5f95587b101a08b8f3a0eb7abcbf2c3708b41ef",
+      "matches_parent": true
+    },
+    {
+      "group": "recorded_results",
+      "path": "results/uncertainty_peak.csv",
+      "sha256": "c72bf78c926433a5ec9472b932650430e456a181e157dea836f0ddd01327bafb",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "experiments/extend.py",
+      "sha256": "52b96c97e5f1561fea01f0f41d10ec7860a83208f034f8c7fd1aeb20420fad32",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "experiments/run.py",
+      "sha256": "b50a6e0c9c7eeafda195418d6e67ae39483b0c011aae1e02098ad786234a2db8",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "experiments/summarize.py",
+      "sha256": "9f2154155cb40e0fe5dad5724e02ee2d7b03872360da60acb0a57e45a38b9065",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "src/training_order/__init__.py",
+      "sha256": "16024babd62a392ff54e1b2c2264a476565d07cabb7cafd30dd196b071837542",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "src/training_order/certify.py",
+      "sha256": "95b38f088a4f3373e30cdf9ebd2e59f488f6602654669d5c69b8c7e19f059343",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "src/training_order/core.py",
+      "sha256": "e60576bb05b727556665f7425eefb0aa05d3ab133686a5ebe0b1b5a7b4df4817",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "src/training_order/global_bounds.py",
+      "sha256": "0e836b0842e2ab4efcf89f03dc9934fdc6073a7c0cf9fbf44ad8bd5faa90d4d1",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "src/training_order/moments.py",
+      "sha256": "6e03fa84791246605992dfc1ce1bee02a8abda4d8bbc9414cfe6e3bdbf0bd63f",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "src/training_order/spectral.py",
+      "sha256": "6c6dd5ec33e59edd9b1c9b368ed89e4bea758b658b489d4ae4520bf8bca06182",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "tests/test_core.py",
+      "sha256": "1094360706422fff944e4e41143e8e6ed9934a6303ce630a7353cb7591f19c9d",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "tests/test_global_boundary.py",
+      "sha256": "5e47837199e1c810cbfc9f3f36e7c0cb9b87543847d4af9410bd8e581aee1cb9",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "tests/test_independent.py",
+      "sha256": "77eccbe1a06b1c6ca7b4ccb2c0f657e1df9f7f18d9de8f7334b5292487401f11",
+      "matches_parent": true
+    },
+    {
+      "group": "scientific_code_and_tests",
+      "path": "tests/test_moments.py",
+      "sha256": "b427f948f0713340a23edd08561818329f04a909c7a22818449fd6f3567a578d",
+      "matches_parent": true
+    }
+  ]
+}

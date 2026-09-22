@@ -1,0 +1,81 @@
+{
+  "scientific_csv_rows": {
+    "arbitrary_schedule_audit.csv": 1200,
+    "boundary_high_precision.csv": 150,
+    "capacity_compute.csv": 78,
+    "compute_to_target.csv": 57,
+    "diffusion_audit.csv": 480,
+    "diffusion_curves.csv": 484,
+    "discretization.csv": 15,
+    "family_curves.csv": 3050,
+    "finite_data_sgd.csv": 4800,
+    "gaussian_sgd_moments.csv": 864,
+    "gaussian_sgd_monte_carlo.csv": 32,
+    "global_boundary_curves.csv": 1500,
+    "isotropic_audit.csv": 160,
+    "near_boundary_gain.csv": 45,
+    "nonlinear_stress.csv": 384,
+    "perturbed_geometry.csv": 240,
+    "pilot_trials.csv": 4320,
+    "spectral_profiles.csv": 24,
+    "static_audit.csv": 200,
+    "two_phase_bound_audit.csv": 400,
+    "uncertainty_peak.csv": 55
+  },
+  "finite_data_sgd": {
+    "runs": 320,
+    "wins": 159,
+    "median_gain": 0.9943661219388461
+  },
+  "nonlinear_stress": {
+    "runs": 48,
+    "wins": 11,
+    "median_gain": 0.8979675506460454
+  },
+  "pilots": {
+    "0.0": {
+      "trials": 2160,
+      "coverage": 2158,
+      "accepts": 25,
+      "false_accepts": 0,
+      "median_selected_gain": 0.4167049483661658,
+      "accepted_median_gain": 1.446975833423841,
+      "accepted_min_gain": 1.255046819816085,
+      "accepted_max_gain": 1.706377800459271
+    },
+    "0.02": {
+      "trials": 2160,
+      "coverage": 2158,
+      "accepts": 23,
+      "false_accepts": 0,
+      "median_selected_gain": 0.4027336089482762,
+      "accepted_median_gain": 1.3999211990619755,
+      "accepted_min_gain": 1.205835730121002,
+      "accepted_max_gain": 1.639469769885237
+    }
+  },
+  "capacity_slopes": [
+    {
+      "alpha": 1.0,
+      "beta": 1.0,
+      "observed": -0.4999897086425714,
+      "predicted": -0.5
+    },
+    {
+      "alpha": 1.0,
+      "beta": 2.0,
+      "observed": -0.9995733317597436,
+      "predicted": -1.0
+    },
+    {
+      "alpha": 2.0,
+      "beta": 1.0,
+      "observed": -0.33295139923668077,
+      "predicted": -0.3333333333333333
+    }
+  ],
+  "shared_spectral": {
+    "max_candidate_gain": 1.003143711197105,
+    "mean_candidate_gain": 1.0002266056670892
+  }
+}

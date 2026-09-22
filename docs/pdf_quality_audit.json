@@ -1,0 +1,28 @@
+{
+  "revision": "v3 nine-page polish",
+  "pages": 32,
+  "main_text_pages": 9,
+  "statements_and_references_start_page": 10,
+  "appendices_start_page": 12,
+  "cited_references": 31,
+  "overfull_boxes": 0,
+  "undefined_references_or_citations": false,
+  "rendering": "All 32 final pages rendered using pdftoppm at 90 dpi and inspected in page/contact-sheet views; targeted main pages also inspected individually.",
+  "pdf_sha256": "0fef9c7d10937956e9d4db36381ad11db42df934254e860fdfdc9c9cb521f86e",
+  "template_git_blob_sha1": "f61ad7efce0855557694078c0945e6c33feb8236",
+  "template_byte_identical_to_fetched_official_source": true,
+  "template_bytes": 9025,
+  "identity_string_scan": {
+    "tested": [
+      "jingxuxie",
+      "Scaling-training-order",
+      "dc32104a",
+      "/mnt/data",
+      "Eston Javas"
+    ],
+    "found": []
+  },
+  "pdf_author_metadata": "",
+  "submitted": false,
+  "scope": "Formatting, source/citation, and visual checks. Not independent proof review or venue certification."
+}

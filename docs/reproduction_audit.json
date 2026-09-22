@@ -1,0 +1,119 @@
+{
+  "raw_csvs": 21,
+  "derived_csvs": 4,
+  "summary_jsons": 2,
+  "byte_identical": true,
+  "files": [
+    {
+      "file": "arbitrary_schedule_audit.csv",
+      "sha256": "fc54f3ea685ef40cfa80da4720e45715d53c54042f21213a337fe04bb0c088e8"
+    },
+    {
+      "file": "boundary_high_precision.csv",
+      "sha256": "47d5c9ec94f7199d6f0851087950d1e48e1794286c5dc03100a06e0af1305a41"
+    },
+    {
+      "file": "capacity_compute.csv",
+      "sha256": "30febbbfcc751ec24347f9596b509c934780b907d81fbcf87467f472432c9651"
+    },
+    {
+      "file": "compute_to_target.csv",
+      "sha256": "91461fd575112a57e99ff66597a3c9ba2094136e864a9d7e53c0ea214b9d0705"
+    },
+    {
+      "file": "diffusion_audit.csv",
+      "sha256": "97aa3336743ba9c8a00a44d541f4ea260564686536cb86403516802be0dbd5d9"
+    },
+    {
+      "file": "diffusion_curves.csv",
+      "sha256": "656b10eaff4444b6b53ab5e0dd90bdfc55c7d25a46b8c7af4ad83ff9f197997c"
+    },
+    {
+      "file": "discretization.csv",
+      "sha256": "eaa29c7f4fb78cb4554121763742e0921b24bb4777a8100ed946a182f614755f"
+    },
+    {
+      "file": "extension_summary.json",
+      "sha256": "62267a5f4d4721d34d02380ce3890176a863ae5ea1b20a2f25c6b3f33abd18eb"
+    },
+    {
+      "file": "family_curves.csv",
+      "sha256": "850842be2851a9b3fd945c8728e34d2c217e54925ff684ac3530a7a7156d50b6"
+    },
+    {
+      "file": "finite_data_sgd.csv",
+      "sha256": "23b42f7936e6713a6a0c50b529bac5cbf6fbf675b3c2db88b423cd6554768b84"
+    },
+    {
+      "file": "finite_data_sgd_summary.csv",
+      "sha256": "e472ccab5d065046cebf0fca302266d305d5999456d8a62e6df8b226d32e5373"
+    },
+    {
+      "file": "gaussian_sgd_moments.csv",
+      "sha256": "aa8edbe38df06a883650b19e7b08fb3dbc6c5770d1f0c0f73f5f4d7024013ac5"
+    },
+    {
+      "file": "gaussian_sgd_monte_carlo.csv",
+      "sha256": "f06e9fe1982a1781bf632a9f6dc5f4d08ea10134fae0c5ba008eb94021a1bf97"
+    },
+    {
+      "file": "global_boundary_curves.csv",
+      "sha256": "4cb7907d89e5163ead07f6d422908f06cf8ce152b230036b56185053c2f3ef13"
+    },
+    {
+      "file": "isotropic_audit.csv",
+      "sha256": "0f03fcce99c22f6029471c5659c9f0125d518b51e82d02a9a092d525a6d24d48"
+    },
+    {
+      "file": "moment_condition_summary.csv",
+      "sha256": "fce51f2944d9c94c4ed9b0e699e5b48d46b02d41d247901bc11f28775dbbdf05"
+    },
+    {
+      "file": "near_boundary_gain.csv",
+      "sha256": "eb24451b31572575339e921beaf630291e99cebf8a80ebb4a9eefaef79e71da8"
+    },
+    {
+      "file": "nonlinear_stress.csv",
+      "sha256": "3d460df001de09acad7dfc421b5a5f9e35c819146929170b261ffb7a6c4dbbc3"
+    },
+    {
+      "file": "nonlinear_stress_summary.csv",
+      "sha256": "048f4ad95fa60c06fa64833d366155a3462912a5d1453384d0dc60f0d07dda0e"
+    },
+    {
+      "file": "perturbation_summary.csv",
+      "sha256": "6f9e84884172ae22c7bdf924533571c1b3a119b97d82aaa1550b7659d7c33883"
+    },
+    {
+      "file": "perturbed_geometry.csv",
+      "sha256": "bd5d6a2a7e8690056190eb99c433d4b6664846bb62396d38d813621483950526"
+    },
+    {
+      "file": "pilot_trials.csv",
+      "sha256": "ecb2743b5fcb89f35c4c59e771383b2109656d59ffc3c7fb143217e9f26a1dc7"
+    },
+    {
+      "file": "spectral_profiles.csv",
+      "sha256": "9cabcf79752776aae109261e88bc0fd29925ebef6a407cf9eebae5927a2ebea7"
+    },
+    {
+      "file": "static_audit.csv",
+      "sha256": "b31f1b76660b08b1ce3fb05d5ac374ea7673214cb2dabfe49371973fb1207604"
+    },
+    {
+      "file": "summary.json",
+      "sha256": "e35a1e2a268053e77cb12d90f3c4a033c31b0b7e66f4992b658755d6fa828091"
+    },
+    {
+      "file": "two_phase_bound_audit.csv",
+      "sha256": "db0cd93ef8043bed91d1aaa3a5f95587b101a08b8f3a0eb7abcbf2c3708b41ef"
+    },
+    {
+      "file": "uncertainty_peak.csv",
+      "sha256": "c72bf78c926433a5ec9472b932650430e456a181e157dea836f0ddd01327bafb"
+    }
+  ],
+  "python_tests": 212,
+  "execution": "All suites executed; long combined process was interrupted by tool timeout, remaining extension suites completed separately. Same-environment byte comparison passed.",
+  "remote_CI_executed": false
+}

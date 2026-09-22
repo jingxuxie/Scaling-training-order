@@ -1,0 +1,14 @@
+{
+  "suite_seconds": {
+    "arbitrary": 2.501107198999989,
+    "boundary": 0.44027836399993703,
+    "near_boundary": 0.4343436729999439,
+    "diffusion": 0.6196644479999804,
+    "moments": 3.0369460340000387,
+    "monte_carlo": 2.942004496999971,
+    "curves": 8.901640335000025
+  },
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41"
+}

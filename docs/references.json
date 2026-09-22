@@ -1,0 +1,281 @@
+[
+  {
+    "key": "bengio2009",
+    "label": "Bengio et~al.(2009)",
+    "authors": "Yoshua Bengio, J\\'er\\^ome Louradour, Ronan Collobert, and Jason Weston",
+    "title": "Curriculum learning",
+    "venue": "International Conference on Machine Learning, pp. 41--48",
+    "year": 2009,
+    "url": "https://doi.org/10.1145/1553374.1553380"
+  },
+  {
+    "key": "bordelon2022",
+    "label": "Bordelon and Pehlevan(2022)",
+    "authors": "Blake Bordelon and Cengiz Pehlevan",
+    "title": "Learning curves for SGD on structured features",
+    "venue": "International Conference on Learning Representations",
+    "year": 2022,
+    "url": "https://openreview.net/forum?id=WPI2vbkAl3Q"
+  },
+  {
+    "key": "bordelon2024",
+    "label": "Bordelon et~al.(2024)",
+    "authors": "Blake Bordelon, Alexander Atanasov, and Cengiz Pehlevan",
+    "title": "A dynamical model of neural scaling laws",
+    "venue": "International Conference on Machine Learning, PMLR 235:4345--4382",
+    "year": 2024,
+    "url": "https://proceedings.mlr.press/v235/bordelon24a.html"
+  },
+  {
+    "key": "bordelon2025",
+    "label": "Bordelon et~al.(2025)",
+    "authors": "Blake Bordelon, Alexander Atanasov, and Cengiz Pehlevan",
+    "title": "How feature learning can improve neural scaling laws",
+    "venue": "International Conference on Learning Representations",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2409.17858"
+  },
+  {
+    "key": "boucheron2013",
+    "label": "Boucheron et~al.(2013)",
+    "authors": "St\\'ephane Boucheron, G\\'abor Lugosi, and Pascal Massart",
+    "title": "Concentration Inequalities: A Nonasymptotic Theory of Independence",
+    "venue": "Oxford University Press",
+    "year": 2013,
+    "url": "https://academic.oup.com/book/26549"
+  },
+  {
+    "key": "chen2023",
+    "label": "Chen et~al.(2023)",
+    "authors": "Mayee F. Chen, Nicholas Roberts, Kush Bhatia, Jue Wang, Ce Zhang, Frederic Sala, and Christopher R\\'e",
+    "title": "Skill-it! A data-driven skills framework for understanding and training language models",
+    "venue": "Advances in Neural Information Processing Systems, 36",
+    "year": 2023,
+    "url": "https://papers.nips.cc/paper_files/paper/2023/hash/70b8505ac79e3e131756f793cd80eb8d-Abstract-Conference.html"
+  },
+  {
+    "key": "chen2025",
+    "label": "Chen et~al.(2025)",
+    "authors": "Mayee F. Chen, Michael Y. Hu, Nicholas Lourie, Kyunghyun Cho, and Christopher R\\'e",
+    "title": "Aioli: A unified optimization framework for language model data mixing",
+    "venue": "International Conference on Learning Representations",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2411.05735"
+  },
+  {
+    "key": "chen2026",
+    "label": "Chen et~al.(2026)",
+    "authors": "Mayee F. Chen, Tyler Murray, David Heineman, Matt Jordan, Hannaneh Hajishirzi, Christopher R\\'e, Luca Soldaini, and Kyle Lo",
+    "title": "Olmix: A framework for data mixing throughout LM development",
+    "venue": "arXiv:2602.12237",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2602.12237"
+  },
+  {
+    "key": "dai2026",
+    "label": "Dai and Zheng(2026)",
+    "authors": "Rui Dai and Shuran Zheng",
+    "title": "Explaining data mixing scaling laws",
+    "venue": "International Conference on Machine Learning",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2606.08167"
+  },
+  {
+    "key": "fan2024",
+    "label": "Fan et~al.(2024)",
+    "authors": "Simin Fan, Matteo Pagliardini, and Martin Jaggi",
+    "title": "DoGE: Domain reweighting with generalization estimation",
+    "venue": "International Conference on Machine Learning, PMLR 235:12895--12915",
+    "year": 2024,
+    "url": "https://proceedings.mlr.press/v235/fan24e.html"
+  },
+  {
+    "key": "golden1965",
+    "label": "Golden(1965)",
+    "authors": "Sidney Golden",
+    "title": "Lower bounds for the Helmholtz function",
+    "venue": "Physical Review, 137(4B):B1127--B1128",
+    "year": 1965,
+    "url": "https://doi.org/10.1103/PhysRev.137.B1127"
+  },
+  {
+    "key": "gu2025",
+    "label": "Gu et~al.(2025)",
+    "authors": "Yuxian Gu, Li Dong, Hongning Wang, Yaru Hao, Qingxiu Dong, Furu Wei, and Minlie Huang",
+    "title": "Data selection via optimal control for language models",
+    "venue": "International Conference on Learning Representations",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2410.07064"
+  },
+  {
+    "key": "hacohen2019",
+    "label": "Hacohen and Weinshall(2019)",
+    "authors": "Guy Hacohen and Daphna Weinshall",
+    "title": "On the power of curriculum learning in training deep networks",
+    "venue": "International Conference on Machine Learning, PMLR 97:2535--2544",
+    "year": 2019,
+    "url": "https://proceedings.mlr.press/v97/hacohen19a.html"
+  },
+  {
+    "key": "higham2008",
+    "label": "Higham(2008)",
+    "authors": "Nicholas J. Higham",
+    "title": "Functions of Matrices: Theory and Computation",
+    "venue": "SIAM",
+    "year": 2008,
+    "url": "https://doi.org/10.1137/1.9780898717778"
+  },
+  {
+    "key": "hoffmann2022",
+    "label": "Hoffmann et~al.(2022)",
+    "authors": "Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Elena Buchatskaya, Trevor Cai, Eliza Rutherford, Diego de Las Casas, Lisa Anne Hendricks, Johannes Welbl, Aidan Clark, Thomas Hennigan, Eric Noland, Katherine Millican, George van den Driessche, Bogdan Damoc, Aurelia Guy, Simon Osindero, Kar\\'en Simonyan, Erich Elsen, Oriol Vinyals, Jack Rae, and Laurent Sifre",
+    "title": "An empirical analysis of compute-optimal large language model training",
+    "venue": "Advances in Neural Information Processing Systems, 35",
+    "year": 2022,
+    "url": "https://papers.nips.cc/paper_files/paper/2022/hash/c1e2faff6f588870935f114ebe04a3e5-Abstract-Conference.html"
+  },
+  {
+    "key": "kaplan2020",
+    "label": "Kaplan et~al.(2020)",
+    "authors": "Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei",
+    "title": "Scaling laws for neural language models",
+    "venue": "arXiv:2001.08361",
+    "year": 2020,
+    "url": "https://arxiv.org/abs/2001.08361"
+  },
+  {
+    "key": "liberzon2003",
+    "label": "Liberzon(2003)",
+    "authors": "Daniel Liberzon",
+    "title": "Switching in Systems and Control",
+    "venue": "Birkh\\\"auser Boston",
+    "year": 2003,
+    "url": "https://doi.org/10.1007/978-1-4612-0017-8"
+  },
+  {
+    "key": "liu2025",
+    "label": "Liu et~al.(2025)",
+    "authors": "Qian Liu, Xiaosen Zheng, Niklas Muennighoff, Guangtao Zeng, Longxu Dou, Tianyu Pang, Jing Jiang, and Min Lin",
+    "title": "RegMix: Data mixture as regression for language model pre-training",
+    "venue": "International Conference on Learning Representations",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2407.01492"
+  },
+  {
+    "key": "maloney2022",
+    "label": "Maloney et~al.(2022)",
+    "authors": "Alexander Maloney, Daniel A. Roberts, and James Sully",
+    "title": "A solvable model of neural scaling laws",
+    "venue": "arXiv:2210.16859",
+    "year": 2022,
+    "url": "https://arxiv.org/abs/2210.16859"
+  },
+  {
+    "key": "mori2025",
+    "label": "Mori et~al.(2025)",
+    "authors": "Francesco Mori, Stefano Sarao Mannelli, and Francesca Mignacco",
+    "title": "Optimal protocols for continual learning via statistical physics and control theory",
+    "venue": "International Conference on Learning Representations",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2409.18061"
+  },
+  {
+    "key": "pentina2015",
+    "label": "Pentina et~al.(2015)",
+    "authors": "Anastasia Pentina, Viktoriia Sharmanska, and Christoph H. Lampert",
+    "title": "Curriculum learning of multiple tasks",
+    "venue": "IEEE Conference on Computer Vision and Pattern Recognition",
+    "year": 2015,
+    "url": "https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Pentina_Curriculum_Learning_of_2015_CVPR_paper.pdf"
+  },
+  {
+    "key": "saglietti2022",
+    "label": "Saglietti et~al.(2022)",
+    "authors": "Luca Saglietti, Stefano Sarao Mannelli, and Andrew Saxe",
+    "title": "An analytical theory of curriculum learning in teacher-student networks",
+    "venue": "Advances in Neural Information Processing Systems, 35",
+    "year": 2022,
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/84bad835faaf48f24d990072bb5b80ee-Abstract-Conference.html"
+  },
+  {
+    "key": "shukor2025",
+    "label": "Shukor et~al.(2025)",
+    "authors": "Mustafa Shukor, Louis Bethune, Dan Busbridge, David Grangier, Enrico Fini, Alaaeldin El-Nouby, and Pierre Ablin",
+    "title": "Scaling laws for optimal data mixtures",
+    "venue": "Advances in Neural Information Processing Systems, 38",
+    "year": 2025,
+    "url": "https://papers.nips.cc/paper_files/paper/2025/hash/bc1d640f841f752c689aae20b31198c1-Abstract-Conference.html"
+  },
+  {
+    "key": "sweeney2026",
+    "label": "Sweeney(2026)",
+    "authors": "John Sweeney",
+    "title": "The geometry of sequential learning: Lie-bracket prediction of transfer order",
+    "venue": "International Conference on Machine Learning",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2606.24993"
+  },
+  {
+    "key": "thompson1965",
+    "label": "Thompson(1965)",
+    "authors": "Colin J. Thompson",
+    "title": "Inequality with applications in statistical mechanics",
+    "venue": "Journal of Mathematical Physics, 6(11):1812--1813",
+    "year": 1965,
+    "url": "https://doi.org/10.1063/1.1704727"
+  },
+  {
+    "key": "weinshall2018",
+    "label": "Weinshall et~al.(2018)",
+    "authors": "Daphna Weinshall, Gad Cohen, and Dan Amir",
+    "title": "Curriculum learning by transfer learning: Theory and experiments with deep networks",
+    "venue": "International Conference on Machine Learning, PMLR 80:5238--5246",
+    "year": 2018,
+    "url": "https://proceedings.mlr.press/v80/weinshall18a.html"
+  },
+  {
+    "key": "weinshall2020",
+    "label": "Weinshall and Amir(2020)",
+    "authors": "Daphna Weinshall and Dan Amir",
+    "title": "Theory of curriculum learning, with convex loss functions",
+    "venue": "Journal of Machine Learning Research, 21(222):1--19",
+    "year": 2020,
+    "url": "https://jmlr.org/papers/v21/18-751.html"
+  },
+  {
+    "key": "wu2021",
+    "label": "Wu et~al.(2021)",
+    "authors": "Xiaoxia Wu, Ethan Dyer, and Behnam Neyshabur",
+    "title": "When do curricula work?",
+    "venue": "International Conference on Learning Representations",
+    "year": 2021,
+    "url": "https://arxiv.org/abs/2012.03107"
+  },
+  {
+    "key": "xie2023",
+    "label": "Xie et~al.(2023)",
+    "authors": "Sang Michael Xie, Hieu Pham, Xuanyi Dong, Nan Du, Hanxiao Liu, Yifeng Lu, Percy Liang, Quoc V. Le, Tengyu Ma, and Adams Wei Yu",
+    "title": "DoReMi: Optimizing data mixtures speeds up language model pretraining",
+    "venue": "Advances in Neural Information Processing Systems, 36",
+    "year": 2023,
+    "url": "https://papers.nips.cc/paper_files/paper/2023/hash/dcba6be91359358c2355cd920da3fcbd-Abstract-Conference.html"
+  },
+  {
+    "key": "ye2025",
+    "label": "Ye et~al.(2025)",
+    "authors": "Jiasheng Ye, Peiju Liu, Tianxiang Sun, Jun Zhan, Yunhua Zhou, and Xipeng Qiu",
+    "title": "Data mixing laws: Optimizing data mixtures by predicting language modeling performance",
+    "venue": "International Conference on Learning Representations",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2403.16952"
+  },
+  {
+    "key": "zhao2026",
+    "label": "Zhao et~al.(2026)",
+    "authors": "Kaiyan Zhao, Zhongtao Miao, Akiko Aizawa, and Yoshimasa Tsuruoka",
+    "title": "RegMix-D: Dynamic data mixing via proxy training trajectories",
+    "venue": "arXiv:2606.18663",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2606.18663"
+  }
+]

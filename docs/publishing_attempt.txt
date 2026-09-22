@@ -1,0 +1,3 @@
+Historical record from v2; no GitHub push was attempted in the v3 editorial pass.
+
+fatal: unable to access 'https://github.com/jingxuxie/Scaling-training-order.git/': Could not resolve host: github.com

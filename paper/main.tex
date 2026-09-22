@@ -1,0 +1,252 @@
+\documentclass{article}
+\usepackage{iclr2027_conference,times}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,graphicx,microtype,xcolor}
+\usepackage[hidelinks]{hyperref}
+% Standard anonymous submission layout from the supplied ICLR 2027 template.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathcal R}
+\newcommand{\Rs}{\R_{\mathrm{stat}}^*}
+\newcommand{\Rt}{\R_{2}^*}
+\newcommand{\Ra}{\R_{\mathrm{all}}^*}
+\newcommand{\Rp}{\R_{\mathrm{prep}}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\eps}{\varepsilon}
+\title{When Does Training Order Buy Compute?\\An Exact Curriculum--Mixture Boundary}
+\author{Anonymous authors}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+A training curriculum can beat a chosen data mixture without beating the best fixed mixture. We study this stronger comparison in shared-optimum quadratic learning with a fixed optimizer. For two symmetric sources, we identify exactly when changing their weights over time can help. If the sources are separated by angle $\phi$ and the initial error has orthogonal second-moment mass $\varepsilon$, balanced mixing is globally optimal over all measurable schedules at budget $B$ if and only if $\varepsilon\ge e^{-2B\cos\phi}$. Below this boundary, two mixed phases suffice for a strict improvement. Just below it, the optimal relative gain is quadratic in the distance to the boundary, with sharp coefficient $1/8$. The proof combines a monotone indefinite quadratic form with a determinant constraint, and applies to any number of switches. We also construct a globally rate-optimal curriculum for a known error direction, separate loss improvements from compute savings, and give conditions under which shared curricula cannot change a power-law exponent. An additive-noise extension and exact Gaussian SGD calculations clarify the limits of the deterministic result. CPU experiments verify the boundary and show that improvements in stochastic training depend strongly on batch size, source sampling, and directional uncertainty. The result is a precise model-level account of when training order is useful, not a universal curriculum prescription.
+\end{abstract}
+
+\section{Introduction}
+Training on several data sources requires two decisions: how much of each source to use, and when to use it. Scaling laws address allocations among model size, data, and training duration \citep{kaplan2020,hoffmann2022}; data-mixture methods also optimize source proportions \citep{ye2025,shukor2025,dai2026}. A curriculum adds the freedom to change those proportions as training proceeds. This freedom creates an appealing possibility: a source that is useful early may prepare the model to learn more efficiently from another source later. But it also creates a harder comparison problem. An ordering can outperform uniform sampling simply because uniform sampling uses the wrong proportions.
+
+To establish a value for \emph{order itself}, the reference must therefore be the best fixed mixture at the same budget. Even matching the curriculum's total source exposure is not enough: another constant allocation could be better than both methods. Nor does a preference for $A$ followed by $B$ over the reverse order settle the question. Both orders may lose to mixing throughout training. We ask the stronger question: \emph{when can changing source weights beat every static mixture, and how much compute can that freedom save?} The static competitor is reoptimized for every budget, rather than selected once and reused across scales.
+
+This question is related to, but distinct from, learning a good curriculum in a particular application. Dynamic data mixing and optimal-control approaches already select useful training schedules \citep{chen2025,gu2025,mori2025,zhao2026}. Local geometric analyses can predict which source should come first \citep{sweeney2026}. Our objective is a comparison theorem: a condition under which \emph{no} admissible schedule can help, together with a construction that helps when the condition fails. Such a result identifies what a scheduler must know and which improvements a more elaborate planner cannot obtain.
+
+We study a model that isolates training order from conflicting tasks and changing targets. Both sources have quadratic population losses with the same minimizer, and the optimizer is fixed. The sources differ only in the directions of error that they reduce. A first source can reshape the remaining error so that a second source removes it quickly. This preparation is useful when the residual lies in a favorable direction. However, a schedule that prepares that direction can leave more error in a perpendicular direction. Its value therefore depends not only on source geometry, but also on the \emph{initial second moment}: the average squared error in each direction across the training problems to which the same schedule is applied.
+
+The main result makes this tradeoff exact. For two symmetric source directions separated by an acute angle $\phi$, let $\varepsilon$ be the initial error mass perpendicular to their bisector, normalized so that the bisector mass is one. At budget $B$, balanced static mixing is globally optimal over \emph{all measurable schedules} if and only if $\varepsilon\ge e^{-2B\cos\phi}$. The statement permits arbitrarily many costless switches. Below the boundary, two mixed phases already suffice for a strict benefit; above it, no additional scheduling complexity can help. The schedule is chosen before drawing the initial error. A policy that observes each realized residual and then selects its own schedule has more information and is not covered by this claim.
+
+Two consequences change how the benefit should be interpreted. For every fixed positive orthogonal mass, static mixing becomes \emph{exactly optimal} after a finite budget. Thus a useful ordering may have a limited budget window, even with perfectly known source geometry. Moreover, a strict advantage is not necessarily a worthwhile one. Just below the boundary, the best relative improvement is quadratic in the distance to it, with coefficient $1/8$. Close to the threshold, estimating the geometry or searching for a schedule could cost more than the training benefit. Equal-budget loss ratios must also be distinguished from savings in work needed to reach a target loss.
+
+Our theoretical contribution has three parts. We obtain an exact budget-optimal static benchmark and a necessary-and-sufficient comparison against arbitrary schedules. We then quantify the benefit through a matching near-boundary expansion and a globally rate-optimal construction for a known direction. Finally, we connect this finite-dimensional result to additive noise and shared block-spectral models, giving conditions under which scheduling cannot change a power-law exponent. The proof uses constraints on the entire training trajectory, rather than treating a local order effect as evidence of a global advantage.
+
+The experiments follow the same separation of questions. Exact matrix calculations check the formulas. Exact expected Gaussian SGD tests whether useful schedules remain when gradients are noisy, using a bracket over \emph{all} static mixture weights. Finite-data and small nonlinear experiments test a direct transfer of the preparation rule, and retain its failures. Gains in the stochastic model depend on batch size and how sources are sampled within a batch; the nonlinear test is negative. The paper therefore offers a precise account of when order is valuable in a controlled model, not a universal recipe for neural-network training.
+
+\input{related_work.tex}
+
+\section{Model and the exact static comparator}\label{sec:model}
+\subsection{What is held fixed, and what the scheduler controls}
+Consider $L_i(\theta)=\tfrac12(\theta-\theta^*)^\top H_i(\theta-\theta^*)$ for $i\in\{A,B\}$, with $H_i\succeq0$ and a common target $\theta^*$. For example, these losses arise from realizable linear regression with source covariance $H_i$, after subtracting any irreducible label-noise loss. There is no disagreement about the correct predictor. Differences in training arise because a source provides more curvature, and hence faster error reduction under gradient flow, in some directions than in others.
+
+If source $i$ costs $c_i>0$ per unit of gradient-flow time, define $G_i=H_i/c_i$. With normalized work $t$ and fraction $p(t)$ of the instantaneous work allocated to source $A$, the error follows
+\begin{equation}
+ \dot e(t)=-G(p(t))e(t),\qquad G(p)=pG_A+(1-p)G_B.\label{eq:dynamics}
+\end{equation}
+The scheduler changes only $p(t)$. It does not change the optimizer, learning-rate convention, model, or target. Work is the resource in this specified dynamics, not a hardware-independent count of floating-point operations. The normalization permits unequal source costs, but the exact theorem below requires the resulting \emph{normalized} generators to have the stated symmetry.
+
+A schedule $\pi$ is a measurable function $p:[0,B]\to[0,1]$ chosen before drawing $e_0$. It may use the known source matrices and initial-error second moment, but not the realized error. For finite phases, its transition is
+$\Phi_\pi=e^{-b_KG(p_K)}\cdots e^{-b_1G(p_1)}$, where $\sum_k b_k=B$; the rightmost phase acts first. Intermediate weights are allowed within each phase. Switching and planning are free in the main comparison. This favors curricula; the existence of a beneficial path need not survive a charge for finding or switching it.
+
+Let $S=\E[e_0e_0^\top]$ and let $Q\succeq0$ weight errors at evaluation. The expected target loss is
+\begin{equation}
+ \R(\pi)=\tfrac12\tr(Q\Phi_\pi S\Phi_\pi^\top).\label{eq:risk}
+\end{equation}
+For linear prediction, $Q$ can be the target input covariance. The theorem uses $Q=I$, so it measures total squared parameter error. Write $\Rs,\Rt,\Ra$ for the infima over static mixtures, at most two phases, and all measurable schedules. Because a static weight is a valid curriculum, $\Ra\le\Rt\le\Rs$. A numerical candidate supplies an upper bound on optimal curriculum risk; it does not establish the optimum.
+
+\subsection{A source family with interpretable error directions}
+Take unit source directions $v_A=(1,0)^\top$ and $v_B=(\cos\phi,\sin\phi)^\top$, with $0<\phi<\pi/2$. Let $u$ be their unit bisector and $v$ its counterclockwise perpendicular. Set
+\begin{equation}
+ G_A=v_Av_A^\top+\rho I,\quad G_B=v_Bv_B^\top+\rho I,\quad
+ S=uu^\top+\varepsilon vv^\top,\quad Q=I,\qquad \rho,\varepsilon\ge0.\label{eq:mainfamily}
+\end{equation}
+The shared ridge $\rho$ gives both sources some curvature in every direction. Without it, each source teaches only one direction, while an interior mixture still learns both. These are Gaussian source covariances for one shared linear regression target, not two tasks with incompatible labels.
+
+The parameter $\varepsilon$ describes residual variation, not measurement error in the source matrices. One concrete ensemble is $e_0=u+\sqrt\varepsilon\,Z v$, where $\Pr(Z=1)=\Pr(Z=-1)=1/2$. Its mean is $u$, its covariance is $\varepsilon vv^\top$, and its \emph{second moment} is exactly $S$. At $\varepsilon=0$ the error direction is known. At $\varepsilon=1$ the second moment is isotropic, even though the mean need not vanish. The ensemble is held fixed while $B$ changes; $\varepsilon$ is not a posterior confidence radius that training automatically updates.
+
+Put $c=\cos\phi$, $a=(1+c)/2$, and $d=(1-c)/2$. In the $(u,v)$ basis,
+\begin{equation}
+ G(p)=\begin{pmatrix}\rho+a&z\\z&\rho+d\end{pmatrix},\qquad
+ z=(1-2p)\sqrt{ad}.\label{eq:mirror}
+\end{equation}
+Balanced mixing has $z=0$. It reduces the bisector error at rate $\rho+a$ and the perpendicular error at the slower rate $\rho+d$. Other weights couple the two directions without changing those diagonal entries. This separation makes it possible to study preparation against an exactly optimized static reference.
+
+\subsection{The benchmark and the meaning of a gain}
+\begin{proposition}[Exact best static mixture]\label{main:static}
+For every $B\ge0$ and $\varepsilon\ge0$, balanced mixing $p=1/2$ globally minimizes static risk, with
+\begin{equation}
+ \boxed{\Rs(B,\varepsilon)=\tfrac12\left[e^{-2(\rho+a)B}+\varepsilon e^{-2(\rho+d)B}\right].}\label{eq:mainstatic}
+\end{equation}
+\end{proposition}
+\emph{Reason.} Every mixture has the same diagonal in this basis. Scalar Jensen applied to a vector's spectral measure gives $u^\top e^{-2BG}u\ge e^{-2B u^\top Gu}$, and likewise for $v$. Balanced mixing attains both bounds. Appendix~\ref{app:exact} gives the common-diagonal statement. This is an application of a classical inequality, not a new matrix inequality. Crucially, the comparator is optimized over every constant weight, not chosen for convenience.
+
+We report gain as static risk divided by curriculum risk, so one means a tie and values below one mean that a candidate is worse. Optimal gain is at least one because doing no scheduling is allowed. This alone is not evidence of a useful method. A meaningful empirical gain must exceed numerical uncertainty and, for a practical allocator, pay for obtaining the schedule. Section~\ref{sec:consequences} separately compares the work required to reach a common loss target; that work ratio need not equal an equal-budget loss ratio.
+
+\section{Exactly when any curriculum can help}\label{sec:boundary}
+\begin{theorem}[Global curriculum--mixture boundary]\label{main:boundary}
+For \eqref{eq:mainfamily} and $B>0$, balanced static mixing is optimal over all measurable schedules if and only if
+\begin{equation}
+ \boxed{\varepsilon\ge\varepsilon_{\rm crit}(B):=e^{-2B\cos\phi}.}\label{eq:mainboundary}
+\end{equation}
+Below this boundary, a schedule with two mixed phases strictly improves on every static mixture. In particular, for $0<\varepsilon<1$,
+\begin{equation}
+ B\ge B_{\rm stop}(\varepsilon):=\frac{\log(1/\varepsilon)}{2\cos\phi}
+ \quad\Longrightarrow\quad\Ra(B,\varepsilon)=\Rt(B,\varepsilon)=\Rs(B,\varepsilon).
+\end{equation}
+\end{theorem}
+The result does not restrict the number of switches or impose a switching cost. This makes the no-benefit side stronger. On the other side it proves existence of a useful two-phase schedule, not an exact formula for the globally best schedule below the boundary. For $\phi=45^\circ$ and $\varepsilon=0.01$, the stopping boundary is $B\approx3.256$: beyond that budget, even unlimited costless switching cannot improve the population risk.
+
+\subsection{Why the no-benefit side is global}
+The proof uses two facts about the entire transition, rather than comparing adjacent phases. Start the dynamics at $v$, and write its coordinates as $(x(t),y(t))$. The off-diagonal control cancels from the derivative of $W=y^2-x^2$:
+\begin{equation}
+ W'=-2(\rho+d)W+2c x^2,\qquad W(0)=1.
+\end{equation}
+Hence $\|\Phi v\|^2\ge e^{-2(\rho+d)B}$. In plain language, switching cannot reduce the error from the slow initial direction faster than balanced mixing does. This does not prevent it from accelerating the other direction.
+
+Now let $f=\Phi u$, $g=\Phi v$, $t=\|g\|^2$, and $k=f^\top g$. Every generator has trace $1+2\rho$, so the squared determinant is $D=e^{-2(1+2\rho)B}$. The Gram determinant identity gives
+\begin{equation}
+ 2\R(\pi)=\frac{D+k^2}{t}+\varepsilon t
+ \ge\frac{D}{t}+\varepsilon t,\qquad t\ge b:=e^{-2(\rho+d)B}.\label{eq:maingram}
+\end{equation}
+When $\varepsilon\ge D/b^2=e^{-2cB}$, the right side is nondecreasing for $t\ge b$. Balanced mixing attains its minimum at $t=b,k=0$. The quadratic-form bound and determinant therefore rule out \emph{every} schedule, including infinitely many switches. Appendix~\ref{app:global} treats bounded measurable controls directly.
+
+\subsection{Why two phases suffice below the boundary}
+To prove the other direction, perturb balanced mixing rather than guessing a pure-source order. Let the off-diagonal entry be $\eta q$ in the first half of training and $-\eta$ in the second, where
+\begin{equation}
+ q=\frac1{2\cosh(cB/2)-1},\qquad 0<\eta\le\sqrt{ad}.\label{eq:mainwitness}
+\end{equation}
+This choice cancels the first-order change in the column inner product $k$. The slow column length increases as $t=b+K\eta^2+O(\eta^4)$ for an explicit $K>0$, while $k=O(\eta^3)$. Substitution into the exact identity \eqref{eq:maingram} gives
+\begin{equation}
+ \R(\pi_\eta)-\Rs=\tfrac K2(\varepsilon-e^{-2cB})\eta^2+O(\eta^4).
+\end{equation}
+Below the boundary the leading term is negative. A sufficiently small perturbation therefore beats the globally optimized static baseline. The proof also holds for mirror sources with arbitrary diagonals $a_0>d_0>0$ and off-diagonal range $[-h,h]$, $0<h\le\sqrt{a_0d_0}$; their boundary is $e^{-2(a_0-d_0)B}$.
+
+\begin{figure}[t]
+\centering\includegraphics[width=.92\linewidth]{figures/global_boundary.pdf}
+\caption{A useful curriculum can have a finite budget window. At $45^\circ$, plotted curves are attainable candidate gains, not claimed optima below the boundary. Crosses mark the exact stopping budgets: the best possible gain is one thereafter. The initial-error mass $\varepsilon$ is varied while source geometry is fixed.}\label{fig:global}
+\end{figure}
+
+\subsection{A strict benefit can still be too small to matter}
+The Gram lower bound is also quantitatively sharp near the boundary.
+\begin{theorem}[Sharp near-boundary gain]\label{main:near}
+Fix $B>0$, $\phi$, and $\rho$. For $\varepsilon=e^{-2cB}(1-\xi)$ and $\xi\downarrow0$,
+\begin{equation}
+ \boxed{\frac{\Rs}{\Rt}-1=\frac{\xi^2}{8}+O(\xi^3),\qquad
+ \frac{\Rs}{\Ra}-1=\frac{\xi^2}{8}+O(\xi^3).}\label{eq:mainnear}
+\end{equation}
+\end{theorem}
+The lower envelope from \eqref{eq:maingram} is $\sqrt\varepsilon e^{-(1+2\rho)B}$. A perturbation in \eqref{eq:mainwitness} with $\eta^2=b\xi/(2K)$ attains it to error $O(\xi^3)$; a Taylor expansion proves the result (Appendix~\ref{app:near_boundary}). The constants are not uniform as the budget or source off-diagonal strength tends to zero. At relative boundary distance $\xi=0.1$, the leading gain is only $0.00125$, or $0.125\%$. Thus the exact boundary should not be interpreted as a recommendation to spend resources whenever strict improvement is possible.
+
+\section{Compute savings, noise, and scaling}\label{sec:consequences}
+\paragraph{A known direction can benefit substantially.}
+At $\varepsilon=0$, a simple pure-source curriculum first trains on $A$ for $\tau=\log((1+c)/c)$, which aligns the residual with $v_B$, then trains on $B$. For $B\ge\tau$, its exact loss is $A_\phi e^{-2(1+\rho)B}/2$, where $A_\phi=a/c^2$. No schedule can contract any vector faster than rate $1+\rho$, so
+\begin{equation}
+ \tfrac12e^{-2(1+\rho)B}\le\Ra(B,0)\le\Rt(B,0)\le\tfrac{A_\phi}{2}e^{-2(1+\rho)B}.
+\end{equation}
+The construction is globally rate-optimal up to a budget-independent factor, not exactly optimal at every budget. Its static-to-curriculum loss ratio grows as $A_\phi^{-1}e^{2dB}$. In contrast, the ratio of work needed to attain the same small target loss tends to $(\rho+1)/(\rho+a)<2$. At $45^\circ$ and zero ridge, the loss gains are $1.8904$ at $B=4$ and $6.1003$ at $B=8$, but the limiting work ratio is only $1.1716$. Appendix~\ref{app:exact} proves these formulas and Appendix~\ref{app:uncertainty} treats uncertainty for this particular rule.
+
+\paragraph{Noise puts a further limit on gains.}
+Consider the separate additive-noise model $de=-G(p(t))e\,dt+\sigma\,dW$ with a deterministic schedule. Every schedule pays at least the balanced mixture's noise contribution
+\begin{equation}
+ N(B)=\frac{\sigma^2}{4}\left[\frac{1-e^{-2(\rho+a)B}}{\rho+a}+\frac{1-e^{-2(\rho+d)B}}{\rho+d}\right].\label{eq:mainnoise}
+\end{equation}
+Indeed, each injected isotropic error propagates through an admissible suffix schedule; Theorem~\ref{main:boundary} with $\varepsilon=1$ applies to each suffix. Adding the deterministic lower envelope proves that static mixing is still optimal above the same \emph{sufficient} boundary. For any fixed $\sigma>0$, the best possible gain tends to one as $B$ grows, even at $\varepsilon=0$ (Appendix~\ref{app:diffusion}). The deterministic boundary is not asserted necessary under noise, and SGD is not assumed to equal this diffusion.
+
+\paragraph{Order need not change a scaling exponent.}
+To connect finite-dimensional dynamics with power laws, consider blocks with scales $\lambda_j\asymp j^{-\alpha}$ and initial masses $w_j\asymp j^{-1-\beta}$. All blocks must share \emph{one} schedule. Suppose $0\preceq G_{i,j}\preceq L\lambda_j I$ and one static mixture obeys $G(p_0)_j\succeq m\lambda_j I$, uniformly in $j$. For $B\ge1$ and capacity $J\ge1$, including the entire untrained tail, both the best shared schedule and this static mixture attain
+\begin{equation}
+ \R^*(B,J)\asymp B^{-\beta/\alpha}+J^{-\beta}.
+ \qquad \inf_{JB\le C}\R^*(B,J)\asymp C^{-\beta/(\alpha+1)}.\label{eq:mainscaling}
+\end{equation}
+Capacity is chosen before training; $C=JB$ is the assumed model-work accounting. A block cannot contract faster than its upper rate bound, and the static mixture attains a comparable rate in every block. A tail-sum bound and capacity--duration balance give \eqref{eq:mainscaling}. Theorem~\ref{thm:spectral} and Appendix~\ref{app:spectral} give the precise statement and proof. These assumptions rule out exponent changes, not all constant-factor gains, and need not hold for feature-learning networks.
+
+\section{Experiments: strong comparators and mixed outcomes}\label{sec:experiments}
+The experiments ask three different questions: do independent computations reproduce the theoretical boundary; does useful scheduling survive stochastic gradients; and does the preparation rule transfer when its assumptions fail? All experiments are CPU-only and synthetic. Exact-model checks support implementation correctness, not an empirical claim about large models. Complete grids, seeds, and failure cases appear in Appendices~\ref{app:extension_experiments} and \ref{app:experiments}.
+
+\subsection{Checking the boundary rather than only finding favorable examples}
+Across 1,200 random schedules with 1 to 64 phases, we observe no violation of the global lower bound. The audit varies source angle, ridge, budget, and initial mass on both sides of the boundary; it includes pure and mixed phases. Independently, 150 matrix-exponential calculations at 80-digit precision verify the predicted signs of the two-phase perturbation. High precision matters here because the difference from balanced mixing can be much smaller than either loss. Forty-five near-boundary checks recover the coefficient $1/8$, while 480 random diffusion schedules satisfy both noise and total-risk lower bounds.
+
+Figure~\ref{fig:global} shows attainable gains from a small candidate family, not a numerical estimate of the global optimum below the boundary. The marked stopping budgets are exact: after each crossing, balanced mixing is optimal over the entire schedule class. Above the threshold, failure of a numerical search is therefore not the reason we conclude that scheduling cannot help. Conversely, below it, our proof establishes a strict advantage even when a finite candidate search cannot resolve a very small one. The high-precision checks and near-boundary plot in Appendix~\ref{app:extension_experiments} separate these cases.
+
+\subsection{Exact expected SGD with two source-sampling conventions}
+We next use fresh Gaussian linear-regression examples with a common target and independent label noise. For a pure source with covariance $H$, batch size $m$, and step $\eta$, Gaussian fourth moments give the exact update of $S=\E[ee^\top]$:
+\begin{equation}
+ S^+=S-\eta(HS+SH)+\eta^2\left[(1+m^{-1})HSH+m^{-1}\tr(HS)H\right]
+ +\eta^2\sigma_y^2H/m.
+\end{equation}
+Composing these moment updates gives expected terminal risk directly, without fitting a learning curve or estimating it from a finite set of training seeds. Appendix~\ref{app:moments} derives the closure, including the fourth moments of mixed batches. The pure-source formula should not simply be applied to the average covariance of a non-Gaussian mixture.
+
+Our primary convention samples a domain independently for \emph{each example}. The secondary convention chooses one domain for the \emph{entire minibatch}. Both have the same expected gradient at a given parameter, but not the same gradient fluctuations. Averaging a per-example batch can reduce variability in its source composition; choosing a single source for the whole batch retains that component of noise. The conventions agree for batch size one and for pure sources. Distinguishing them prevents a change in sampling noise from being mistaken for a deterministic ordering effect.
+
+The condition grid uses angles $30^\circ,45^\circ,65^\circ$; $B\in\{1,4,8\}$; steps $\eta\in\{0.01,0.05\}$; batches $m\in\{1,8,64\}$; label standard deviations $0,0.1$; and $\varepsilon\in\{0,10^{-4},0.01,0.1\}$, with ridge $0.02$. Each convention has 432 conditions. Within a comparison, all methods use the same $K=B/\eta$ updates and $Km$ examples. Across different step or batch settings, the same $B$ does not imply the same example count or hardware cost. We compare source allocation within each training protocol, not joint optimization of batch size, learning rate, and schedule.
+
+\paragraph{A comparator covering all static weights.}
+For each condition, a curvature bound controls the risk between evaluated weights and supplies a global lower/upper bracket for the best static risk. No convexity assumption is imposed. All 864 brackets have relative width below $0.001$; these are float64 evaluations of an analytical bound, not directed-rounding certificates. A candidate must improve by over 1\% against the \emph{lower} bracket to enter the gain count. Reported median gains instead use the best evaluated static risk, the \emph{upper} bracket. Thus an unresolved gap between grid points cannot explain the counted advantage; the bracket width limits the approximation in the descriptive medians.
+
+The candidate library includes every integer pure-source switch time in both orders, seven mixed perturbation amplitudes, and the best static grid point. It knows the population moments and its search cost is uncharged. The separately reported \emph{flow rule} is the unchanged preparation construction from Section~\ref{sec:consequences}, with its switch rounded to an update; it is feasible in 384 of 432 settings per convention. The library tests whether useful schedules exist under SGD noise, whereas the flow rule tests whether the simple deterministic prescription transfers. Neither is a globally optimized stochastic schedule.
+
+\subsection{What the stochastic comparisons establish}
+\begin{table}[t]
+\centering\small
+\caption{Exact expected SGD over the full condition grid. Median gains use the upper static bracket divided by candidate loss; $>1\%$ counts use the lower bracket. The oracle library includes static mixing; flow-rule medians use its 384 feasible conditions per convention.}\label{tab:mainmoments}
+\begin{tabular}{lrrrr}\toprule
+Source sampling & Cases & $>1\%$ gains & Median candidate gain & Median flow-rule gain\\\midrule
+Per example &432&186&1.0033&0.7368\\
+Per batch &432&220&1.0112&0.7910\\\bottomrule
+\end{tabular}
+\end{table}
+
+Under per-example mixing, 186 of 432 conditions exceed a 1\% improvement against every static weight according to the lower bracket. The median candidate gain is only $1.0033$, and the unadapted flow rule has median $0.7368$. These counts describe a fixed grid of model configurations, not a success probability over an application population. Since the library includes the static option, ties are expected and nonnegative candidate gain alone is not evidence that arbitrary curricula are safe.
+
+The sampling convention changes the magnitude of the apparent benefit. At batch size 64 and $B=4$, median candidate gain is $1.1633$ with per-example mixing and $1.5414$ with per-batch mixing. At $B=8$, the convention-wide medians are one. Figure~\ref{fig:sgdmoments} and the full table in Appendix~\ref{app:extension_experiments} retain the settings where gains disappear. This pattern is consistent with a limited useful budget window, but it does not establish that the deterministic boundary remains exact for SGD.
+
+\begin{figure}[t]
+\centering\includegraphics[width=.92\linewidth]{figures/sgd_moment_comparison.pdf}
+\caption{Median oracle-library gains in exact Gaussian SGD, using the upper static bracket. Solid curves mix sources independently per example; dashed curves choose a source for the entire batch. Each point aggregates 48 conditions. Source-sampling noise changes the apparent benefit, even with identical population losses.}\label{fig:sgdmoments}
+\end{figure}
+
+As an independent implementation check, Monte Carlo training uses 8,192 trajectories per condition in 32 settings, covering both source conventions, static and two-phase methods, and two batch sizes. All sample means lie within three standard errors of the exact moment prediction; the largest absolute standardized discrepancy is $2.096$. This checks the moment implementation against actual sampled training. It is not a simultaneous confidence guarantee across all conditions. The main-grid risks themselves have no finite-trial sampling error, although numerical approximation and model misspecification remain separate issues.
+
+\subsection{Paying for information and departing from the model}
+The population comparisons assume known geometry. A separate confidence gate pays for noisy coordinate measurements of a residual and a declared planning cost. It accepts only when a candidate's upper risk bound beats a lower bound for a full-budget static competitor that did not buy the pilot (Appendix~\ref{app:certificate}). At positive planning charge, it accepts 23 of 2,160 trials, with no observed false acceptance. Median accepted gain is $1.400$, but median gain over \emph{all} outcomes is $0.403$. Rejecting a schedule does not refund the pilot. This supports a conditional acceptance certificate, not an overall policy of always buying measurements.
+
+The finite-data and nonlinear tests address a different claim: whether the unchanged flow preparation rule is already a useful training prescription. Finite-data SGD gives 159 wins out of 320 paired comparisons and median gain $0.9944$. A width-16 tanh network trained in both layers gives 11 wins out of 48, with median gain $0.8980$. Their static weights are chosen in hindsight per seed, with tuning cost uncharged, rather than certified over all weights. These baselines are strong finite grids, but should not be confused with the exact static optimum in the theorem or the all-weight bracket in the moment experiment.
+
+The nonlinear failure shows that input-source geometry alone does not justify this transferred schedule; it does not prove that no learned curriculum could work. Separately, a shared spectral schedule search finds maximum gain only $1.00314$, while capacity experiments recover the predicted exponents. Together the results support a narrow conclusion: the proved mechanism is real, but exploiting it under noisy gradients, uncertain geometry, or feature learning requires more than reusing the deterministic switch rule.
+
+\section{Discussion and limitations}\label{sec:discussion}
+The main theorem answers a global question exactly in a controlled model: when can changing data weights beat every fixed mixture? The answer depends not just on noncommuting source geometry, but on the remaining error in the other direction and the available budget. A monotone quadratic form limits what switching can do; a determinant constraint turns that limitation into an exact boundary. Two phases suffice to cross the boundary, and they attain the sharp leading gain near it.
+
+Several boundaries of the result matter. Schedules are precommitted for an initial-error ensemble, not feedback policies that inspect each realized residual. The exact theorem uses mirror-source geometry and identity target risk; arbitrary Hessian perturbations, target anisotropy, and feature learning are not covered. The boundary says when a strict benefit exists, not whether it pays for switching, calibration, or search. The noisy result treats a stated isotropic diffusion, while SGD uses a separate exact moment model with fresh data. Candidate SGD schedules assume oracle moments and do not establish a budget-accounted learning algorithm. The spectral result assumes uniformly comparable block rates and a fixed adequate mixture.
+
+The numerical experiments expose rather than resolve these practical limitations. Stochastic gains are conditional, the unadapted preparation rule often fails, and the nonlinear test is negative. The resulting contribution is a precise comparison theorem with testable quantitative consequences. It separates a genuine value of training order from the directional information and statistical conditions required to obtain it.
+\label{main:end}
+
+\clearpage
+\section*{AI use statement}\label{sec:ai}
+Generative AI was used substantially in this project, including proposing and developing proofs, writing and revising the manuscript, implementing and running synthetic experiments, generating figures, and assisting literature checks. The supplied tests and proof audits are part of this AI-assisted workflow; they are not independent peer review or formal proof verification. Submission requires the human authors to verify the content, determine authorship, and take responsibility for all claims and citations.
+
+\section*{Reproducibility statement}
+The supplement contains complete proofs, deterministic CPU code, raw and derived tables, fixed seeds, and scripts for tests, independent reproduction, and figure generation. Appendix~\ref{app:extension_experiments} specifies the boundary audits and exact SGD comparisons; Appendix~\ref{app:experiments} records the finite-data, nonlinear, and paid-pilot stress tests, including unfavorable outcomes. No paid API, accelerator, external dataset, or model download is needed. Timing metadata are stored separately from scientific outputs.
+
+\input{references.tex}
+\clearpage
+\appendix
+\input{global_proofs.tex}
+\input{moment_proofs.tex}
+\input{extension_experiments.tex}
+\input{supporting_results.tex}
+\input{proofs.tex}
+\input{experimental_details.tex}
+\end{document}

@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.egg-info/
+build/
+dist/
+reproduced/
+.mplconfig/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/build.log

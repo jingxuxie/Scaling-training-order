@@ -1,0 +1,176 @@
+\section{Supporting comparisons and paid decisions}
+\begin{proposition}[Classical comparison consequences]\label{prop:obstructions}
+If $G_A$ and $G_B$ commute, every fixed schedule equals its exposure-matched static mixture. For arbitrary symmetric PSD generators, if $S=Q=I$, every two-phase schedule has risk at least that of its exposure-matched static mixture. Consequently $\Rt=\Rs$ in the latter setting. More generally, if $S,Q$ are positive definite,
+\begin{equation}
+ 1\le\Gamma_2(B)\le\kappa(S)\kappa(Q),\label{eq:kappa}
+\end{equation}
+where $\kappa$ is the spectral condition number.
+\end{proposition}
+For two phases, Golden--Thompson gives
+\begin{equation}
+ \norm{e^{-b_2G_2}e^{-b_1G_1}}_F^2
+ =\tr(e^{-2b_1G_1}e^{-2b_2G_2})
+ \ge\tr(e^{-2(b_1G_1+b_2G_2)}).
+\end{equation}
+This proves the isotropic case. Eigenvalue comparison proves \eqref{eq:kappa}; details appear in Appendix~\ref{app:basic}. The isotropic argument is a two-phase result, not an asserted multivariate Golden--Thompson inequality. Its practical message is simple: a nonzero commutator does not establish that a curriculum beats the best mixture.
+
+\subsection{An exact global comparison}\label{sec:exact}
+Choose $0<\phi<\pi/2$ and define
+\begin{equation}
+ c=\cos\phi,\quad a=(1+c)/2,\quad d=(1-c)/2,\quad
+ u=\begin{pmatrix}\cos(\phi/2)\\\sin(\phi/2)\end{pmatrix},\quad
+ v=\begin{pmatrix}-\sin(\phi/2)\\\cos(\phi/2)\end{pmatrix}.
+\end{equation}
+The source directions are $v_A=(1,0)^\top$ and $v_B=(\cos\phi,\sin\phi)^\top$. Set
+\begin{equation}
+ G_A=v_Av_A^\top+\rho I,\quad G_B=v_Bv_B^\top+\rho I,
+ \quad S_\eps=uu^\top+\eps vv^\top,\quad Q=I,\label{eq:family}
+\end{equation}
+with $\rho\ge0$ and $\eps\ge0$. The initial error is concentrated along the bisector $u$; $\eps$ measures orthogonal second-moment mass. Positive $\rho$ makes both sources positive definite, so the advantage is not restricted to singular source Hessians.
+
+\begin{theorem}[Budget-optimal static mixture]\label{thm:static}
+For the family \eqref{eq:family}, every budget $B\ge0$ and every $\eps\ge0$,
+\begin{equation}
+ \boxed{\Rs(B,\eps)=\tfrac12e^{-2\rho B}
+        \left(e^{-2aB}+\eps e^{-2dB}\right).}\label{eq:static}
+\end{equation}
+The constant mixture $p=1/2$ attains this value globally.
+\end{theorem}
+The proof uses more than symmetry: in the $(u,v)$ basis, every mixture has diagonal $(a+\rho,d+\rho)$. Scalar Jensen applied to each vector's spectral measure lower-bounds its exponential quadratic form by the corresponding diagonal exponential. The balanced mixture is diagonal and attains both bounds. This also yields a general common-diagonal lemma in Appendix~\ref{app:exact}.
+
+Define
+\begin{equation}
+ \tau=\log\frac{1+c}{c},\qquad
+ A_\phi=\frac{a}{c^2},\quad D_\phi=\frac{d(1+2c)^2}{c^2},\quad F_\phi=\frac{c^2}{a}=A_\phi^{-1}.
+\end{equation}
+The \emph{preparation curriculum} trains on $A$ for $\tau$ and on $B$ for $B-\tau$. Its first phase sends the bisector error exactly into the direction learned most rapidly by $B$.
+
+\begin{theorem}[Constructive comparison and globally optimal rate]\label{thm:prep}
+For $B\ge\tau$, the preparation risk is exactly
+\begin{equation}
+ \boxed{\Rp(B,\eps)=\tfrac12e^{-2\rho B}
+ \left[(A_\phi+\eps D_\phi)e^{-2B}+\eps F_\phi\right].}\label{eq:prep}
+\end{equation}
+For $\eps=0$, it beats every static mixture whenever
+$B>\log A_\phi/(2d)$, with loss ratio
+\begin{equation}
+ \frac{\Rs(B,0)}{\Rp(B,0)}=F_\phi e^{2dB}.\label{eq:ratio}
+\end{equation}
+Moreover, even arbitrary measurable schedules satisfy
+\begin{equation}
+ \tfrac12e^{-2(1+\rho)B}\le\Ra(B,0)
+ \le\Rt(B,0)\le\tfrac{A_\phi}{2}e^{-2(1+\rho)B}.\label{eq:globalrate}
+\end{equation}
+Thus a two-phase construction achieves the globally optimal exponential rate, up to a constant independent of $B$.
+\end{theorem}
+Equation~\eqref{eq:globalrate} does not say the explicit switch time is the exact finite-budget optimum. The lower bound follows because no source has an eigenvalue exceeding $1+\rho$. The closed form follows by resolving the post-preparation residual into $v_B$ and its orthogonal complement.
+
+\paragraph{Loss gains are not work gains.}
+Let $B_s(\ell)$ and $B_p(\ell)$ be the work needed by the best static mixture and the preparation curriculum to reach loss $\ell$ at $\eps=0$. For sufficiently small $\ell$,
+\begin{equation}
+ B_s(\ell)=\frac{\log(1/(2\ell))}{2(\rho+a)},\quad
+ B_p(\ell)=\frac{\log(A_\phi/(2\ell))}{2(\rho+1)},\quad
+ \lim_{\ell\downarrow0}\frac{B_s(\ell)}{B_p(\ell)}
+ =\frac{\rho+1}{\rho+a}<2.\label{eq:work}
+\end{equation}
+The same limiting work ratio holds for the optimal variable schedule by \eqref{eq:globalrate}. At $\phi=45^\circ$, $\rho=0$, the equal-work loss ratios are $1.8904$ at $B=4$ and $6.1003$ at $B=8$, but the limiting work ratio is only $1.1716$.
+
+\subsection{Directional uncertainty changes the asymptotic answer}\label{sec:uncertainty}
+An exact preparation can be useful without being robust. Equation~\eqref{eq:prep} shows what goes wrong: orthogonal initial-error mass leaves a residual term that the final rank-one source cannot remove. A common ridge shrinks this term, but does not remove the gap between its decay rate and that of the optimal mixture.
+
+\begin{theorem}[Exact uncertainty boundary for preparation]\label{thm:threshold}
+Restrict $0\le\eps\le1$. Assume $B\ge\tau$ and $N(B)=e^{-2aB}-A_\phi e^{-2B}>0$. Then preparation beats the globally best static mixture precisely when
+\begin{equation}
+ 0\le\eps<\eps_{\mathrm{prep}}(B):=
+ \frac{e^{-2aB}-A_\phi e^{-2B}}
+ {F_\phi+D_\phi e^{-2B}-e^{-2dB}}.\label{eq:threshold}
+\end{equation}
+The denominator is positive and $\eps_{\mathrm{prep}}(B)\sim e^{-2aB}/F_\phi$ as $B\to\infty$. For $N(B)\le0$, preparation does not strictly improve over static mixing for any $\eps\in[0,1]$.
+\end{theorem}
+The final assertion follows by linear interpolation between the known-error and isotropic no-benefit cases (Appendix~\ref{app:uncertainty}). The threshold concerns this explicit schedule, not the entire two-phase class.
+
+
+
+The next theorem goes beyond failure of the explicit schedule.
+\begin{theorem}[Full-rank obstruction for every two-phase curriculum]\label{thm:fullrank}
+For \eqref{eq:family} and $0<\eps\le1$,
+\begin{equation}
+ \frac{\eps c^2}{2}e^{-2(\rho+d)B}
+ \le\Rt(B,\eps)\le\Rs(B,\eps)
+ \le\frac{1+\eps}{2}e^{-2(\rho+d)B}.\label{eq:floor}
+\end{equation}
+Consequently
+\begin{equation}
+ \lim_{B\to\infty}-\frac{\log\Rt(B,\eps)}{2B}=\rho+d
+ \quad(\eps>0),\qquad
+ \lim_{B\to\infty}-\frac{\log\Rt(B,0)}{2B}=\rho+1.
+\end{equation}
+\end{theorem}
+Every mixture has a slow eigenvalue at most $\rho+d$. Its slow eigenvector lies in a cone of angular width $\phi$, so the slow directions of any two phases have squared overlap at least $c^2$. A nonnegative two-eigenbasis expansion of the squared Frobenius norm then proves \eqref{eq:floor}. This is uniform over both phase lengths and both mixture weights. It does not require optimizing them numerically.
+
+The two-phase bound above is retained as a separate elementary comparison. Theorem~\ref{thm:general_boundary} strengthens it to eventual exact static optimality for every measurable schedule in this family.
+
+\begin{corollary}[Sharp peak-gain law for the explicit curriculum]\label{cor:peak}
+Fix $\phi$. As $\eps\downarrow0$,
+\begin{equation}
+ \sup_{B\ge\tau}\frac{\Rs(B,\eps)}{\Rp(B,\eps)}
+ \sim a^a d^d A_\phi^{-c}\,\eps^{-d}.\label{eq:peak}
+\end{equation}
+\end{corollary}
+Thus uncertainty limits not only how long the explicit schedule is useful, but also its largest attainable loss advantage. This peak law is not a matching characterization of the optimal two-phase gain at every positive $\eps$.
+
+\subsection{When shared curricula cannot change a power-law exponent}\label{sec:spectral}
+The finite-dimensional exponential comparison does not automatically imply an improved neural scaling exponent. Consider independent blocks $j\ge1$, with initial masses $w_j=\tr S_j\asymp j^{-1-\beta}$ and scales $\lambda_j\asymp j^{-\alpha}$, where $\alpha,\beta>0$. All blocks receive \emph{one common} allocation $p(t)$. Assume constants $L,m>0$ and one fixed $p_0$ such that
+\begin{equation}
+ 0\preceq G_{i,j}\preceq L\lambda_j I\quad(i=A,B),\qquad
+ G(p_0)_j\succeq m\lambda_j I\quad\text{for every }j.\label{eq:envelope}
+\end{equation}
+The evaluation geometry is identity. With capacity $J$, only the first $J$ blocks train; the remaining mass is included as an unlearned tail. These assumptions describe comparable learning rates across spectral scales, not a guarantee for arbitrary source geometries.
+
+\begin{theorem}[Shared-schedule and capacity-work exponents]\label{thm:spectral}
+Under \eqref{eq:envelope}, for $B\ge1$, $J\ge1$, the optimal risk over all shared measurable schedules and the risk of the static mixture $p_0$ satisfy the same bounds up to constants:
+\begin{equation}
+ \R^*(B,J)\asymp B^{-\beta/\alpha}+J^{-\beta}.
+\end{equation}
+In the infinite-capacity limit the rate is $B^{-\beta/\alpha}$. If capacity is chosen before training and total normalized model work is $C=JB$, then
+\begin{equation}
+ \inf_{JB\le C}\R^*(B,J)\asymp C^{-\beta/(\alpha+1)},\label{eq:capacity}
+\end{equation}
+attained by $J\asymp C^{1/(\alpha+1)}$ and $B\asymp C^{\alpha/(\alpha+1)}$. The static mixture attains the same exponent.
+\end{theorem}
+The lower bound applies to all schedules because block $j$ cannot contract faster than $L\lambda_j$. The static mixture contracts every block at rate at least $m\lambda_j$. A tail-sum comparison and balancing capacity against training work finish the proof. This is not a statement that curricula give no constant-factor gains. It also does not allow a different switch time in every block, change the optimizer, or grow capacity during training.
+
+
+
+\subsection{From an oracle schedule to a paid acceptance certificate}\label{sec:certificate}
+The preceding theorems assume known geometry. To distinguish a favorable oracle comparison from an actionable decision, first consider approximate generators and second moments. Suppose both true and estimated generators are PSD, $\norm{G_i-\widehat G_i}_{\op}\le\delta_G$ and $\norm{S-\widehat S}_*\le\delta_S$, where $\norm{\cdot}_*$ is nuclear norm. For $Q=I$, every fixed schedule of duration $T$ obeys
+\begin{equation}
+ |\R(\pi)-\widehat\R(\pi)|\le
+ r_T:=\tfrac12\delta_S+\tr(\widehat S)\min\{2,T\delta_G\}.\label{eq:uniform}
+\end{equation}
+Duhamel's identity proves this uniformly over schedules (Appendix~\ref{app:certificate}). An $\eta$-approximate empirical minimizer over a candidate library has excess risk at most $2r_T+\eta$ relative to that library at duration $T$. This is not a guarantee relative to a competitor trained for a larger, uncharged budget.
+
+\paragraph{Charge the observation before comparing.}
+Our implemented pilot addresses a more specific problem: the source generators are known but a deterministic residual $e$ is unknown. It observes $n$ independent $N(e_j,\sigma^2)$ measurements of each coordinate. In dimension $D$, with probability at least $1-\delta$,
+\begin{equation}
+ \norm{e-\widehat e}\le r=\frac{\sigma}{\sqrt n}
+       \left(\sqrt D+\sqrt{2\log(1/\delta)}\right).\label{eq:gaussian}
+\end{equation}
+This is a direct coordinate-measurement model, not an assertion that a neural-network residual is freely observable. The pilot costs $Dnq$ at query price $q$, and the planner is assigned cost $h$. Only $T=B-Dnq-h$ remains for training.
+
+For a known candidate transition $\Phi$, convex quadratic expansion gives a valid upper bound
+\begin{equation}
+ U_\Phi=\tfrac12\norm{\Phi\widehat e}^2
+ +r\norm{\Phi^\top\Phi\widehat e}
+ +\tfrac12r^2\norm{\Phi}_{\op}^2.\label{eq:upper}
+\end{equation}
+Appendix~\ref{app:envelope} constructs a uniform lower bound $L_s(B)$ on the risk of \emph{every static mixture trained for the full original budget}, using a grid of cells and a within-cell matrix-exponential bound. The certificate accepts a candidate trained for $T$ only when
+\begin{equation}
+ U_\Phi(T)<L_s(B).\label{eq:gate}
+\end{equation}
+
+\begin{proposition}[Paid acceptance guarantee]\label{prop:accept}
+On the confidence event \eqref{eq:gaussian}, every candidate accepted by \eqref{eq:gate}, including one selected after observing the pilot, has lower population risk than the optimal no-pilot static mixture trained for $B$. Rejection carries no such guarantee: the pilot cost has already been spent.
+\end{proposition}
+The proof is the chain $\R(\Phi)\le U_\Phi<L_s\le\Rs(B)$. The substantive requirements are simultaneous bounds over the selection set and correct budget accounting. The implementation uses float64 with explicit numerical padding, not directed-rounding interval arithmetic. Its mathematical certificate is valid in real arithmetic; its numerical output is not a formal computer-verified proof.
+

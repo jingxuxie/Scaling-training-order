@@ -1,0 +1,23 @@
+name: CPU tests and scientific reproduction
+on:
+  push:
+  pull_request:
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+      MPLCONFIGDIR: /tmp/training-order-matplotlib
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements-lock.txt
+      - run: python -m pip install --no-deps -e .
+      - run: python -m pytest -q
+      - run: python experiments/run.py --suite all --out reproduced/results
+      - run: python experiments/extend.py --suite all --out reproduced/results
+      - run: python scripts/verify_results.py --generated reproduced/results

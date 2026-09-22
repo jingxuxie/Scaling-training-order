@@ -1,0 +1,46 @@
+{
+  "arbitrary_schedule_audit": {
+    "rows": 1200,
+    "violation": 0
+  },
+  "batch": {
+    "cases": 432,
+    "gain_over_1_01": 220,
+    "max_candidate_gain": 8.923661035511243,
+    "max_relative_static_bracket": 0.0009808998095985,
+    "median_candidate_gain": 1.0112203482832545,
+    "median_preparation_gain": 0.7910428296174232
+  },
+  "boundary_high_precision": {
+    "expected_sign": 150,
+    "rows": 150
+  },
+  "diffusion_audit": {
+    "rows": 480,
+    "violation": 0
+  },
+  "diffusion_curves": {
+    "rows": 484
+  },
+  "example": {
+    "cases": 432,
+    "gain_over_1_01": 186,
+    "max_candidate_gain": 2.5855232054048543,
+    "max_relative_static_bracket": 0.0009775377661352,
+    "median_candidate_gain": 1.0033456110731407,
+    "median_preparation_gain": 0.7367788250647169
+  },
+  "global_boundary_curves": {
+    "rows": 1500
+  },
+  "monte_carlo": {
+    "conditions": 32,
+    "max_abs_z": 2.095845381178329,
+    "replicates_per_condition": 8192,
+    "within_three_se": 32
+  },
+  "near_boundary_gain": {
+    "feasible": 45,
+    "rows": 45
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "revision": "ICLR 2027 local template and academic figure styling",
+  "source_archive": "Scaling-training-order-v3.zip",
+  "pdf_sha256": "fb94b9f2018ba5e4f4ca949999660aa230974afb9f8620dfca73c8a6d1e3c54f",
+  "pages": 32,
+  "main_text_pages": 9,
+  "figure_pages": [
+    6,
+    8,
+    17,
+    25,
+    28,
+    29,
+    31
+  ],
+  "figures_regenerated": 11,
+  "data_series_and_markers_identical": 45,
+  "uncertainty_interval_collections_identical": 3,
+  "top_and_right_spines_hidden_for_all_figures": true,
+  "saved_result_files_byte_identical": 37,
+  "scientific_code_and_test_files_byte_identical": 13,
+  "supporting_tex_files_byte_identical": 12,
+  "main_manuscript_body_identical": true,
+  "copied_template_files_byte_identical": [
+    "iclr2027_conference.sty",
+    "iclr2027_conference.bst",
+    "natbib.sty",
+    "fancyhdr.sty"
+  ],
+  "unresolved_references_or_citations": false,
+  "overfull_boxes": 0,
+  "rendering": "All 32 pages rendered at 100 dpi and inspected in contact sheets; figure pages reviewed individually.",
+  "fonts": "All PDF fonts embedded; figure fonts are TrueType, with no Type 3 fonts.",
+  "scope": "Presentation-only update. No experiments, scientific tests, proof review, or submission performed."
+}
